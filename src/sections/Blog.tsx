@@ -1,5 +1,7 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
+import { ArrowLeft, BookOpen, Calendar, Clock, Sparkles } from 'lucide-react';
+import { cn } from '@/src/lib/utils';
 
 const posts = [
   {
@@ -190,87 +192,243 @@ AI and data make the proactive approach possible.
 But the real value does not come from the tool.
 It comes from how the data is used.
 `
+  },
+  {
+    title: "From Confusion to Clarity: Building SpendGuardAI – My First Real AI System",
+    excerpt: "The behind-the-scenes story of building a system that turns messy financial data into actionable business decisions.",
+    date: "March 2026",
+    readTime: "10 min read",
+    tag: "AI Systems",
+    content: `
+The Problem Nobody Talks About
+
+AI is everywhere.
+
+Everywhere you look, people are building tools, dashboards, agents…
+But here’s something I noticed while working with real businesses:
+
+Most businesses don’t actually understand their own spending.
+
+Not because they don’t have data.
+
+But because:
+* Their data is messy
+* Their systems don’t talk to each other
+* And most importantly…
+* Nobody converts that data into clear decisions
+
+I saw this closely in MSMEs. They had Excel sheets. They had transactions. They even had accounting tools.
+
+But still, when I asked: “Where are you losing money?” — There was silence.
+
+---
+
+The Idea That Started It All
+
+That’s when the idea clicked: What if I build something that doesn’t just analyze data… but actually helps businesses make decisions?
+
+Not another dashboard. Not another report. A system.
+
+That’s how SpendGuardAI started.
+
+---
+
+Version 1: Reality Check
+
+I started simple. Upload a file → clean data → generate insights.
+
+Sounds easy, right? It wasn’t.
+
+The first version was messy, inconsistent, and honestly… not useful. It could process data, yes. But it didn’t think like a business owner. And that was the biggest gap.
+
+---
+
+The Real Challenge (Not Technical)
+
+Most people think building AI products is about models. It’s not.
+
+The real challenge is: How do you turn raw data into something actionable? That changed everything for me.
+
+---
+
+Building the System (Not Just a Tool)
+
+I redesigned everything around a simple flow: Upload → Clean → Analyze → Insights → Decisions.
+
+This became the backbone of SpendGuardAI.
+
+🔹 1. Data Cleaning (The Hidden Monster)
+
+Real-world data is chaotic. Missing columns, wrong formats, inconsistent entries. So I built a cleaning pipeline that standardizes data, handles missing values, and prepares it for analysis.
+
+🔹 2. Smart Categorization
+
+Expenses alone mean nothing. They need context. So I added logic to group expenses, identify patterns, and highlight abnormal spending.
+
+🔹 3. Insight Generation (AI + Fallback System)
+
+Here’s where things got interesting. I integrated AI for insights. But then… API limits hit. Everything broke.
+
+Instead of stopping, I asked: “What happens if AI fails?”
+
+That’s when I built a fallback insight system. So even without AI, the system still generates insights, providing direction and delivering value. This was one of the most important decisions in the entire build.
+
+🔹 4. Decision-Focused Output
+
+I didn’t want: “Your expenses increased by 12%”.
+I wanted: “Reduce supplier X dependency”, “Cut category Y spend”, “Optimize recurring expenses”.
+
+That shift made the system useful.
+
+---
+
+The Struggles Nobody Sees
+
+This project wasn’t smooth.
+
+UI Breaking & Overlapping: At one point, sections were overlapping and components were fighting each other. I rebuilt state handling logic to ensure clean separation of views.
+
+Session Loss Issues: Every refresh meant lost data. Not acceptable. I designed a proper session flow to control state transitions.
+
+API Limitations: The biggest constraint. Fix? A hybrid system (AI + logic-based insights).
+
+---
+
+What I Learned (This Changed My Thinking)
+
+This project changed how I see AI.
+
+Before: AI = cool outputs.
+Now: AI = decision systems.
+
+I realized businesses don’t need more data—they need clarity and direction. And that’s what I started building.
+
+---
+
+Why SpendGuardAI Matters
+
+This is not just a project. It’s my first step towards building systems that help businesses think better, using AI for real decision-making, and solving actual problems.
+
+---
+
+What’s Next?
+
+SpendGuardAI is still evolving. Next steps include better decision intelligence, stronger pattern detection, and a full SaaS-level experience.
+
+---
+
+Final Thought
+
+Most people build projects to show skills. I built this to solve a problem I saw in the real world.
+
+And honestly… This is just the beginning.
+`
   }
 ];
 
 export default function Blog() {
   const [selectedPost, setSelectedPost] = useState<any>(null);
 
-  // 👉 IF BLOG IS SELECTED → SHOW FULL ARTICLE
   if (selectedPost) {
     return (
-      <div className="space-y-8 max-w-3xl mx-auto">
-        
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="space-y-12 max-w-4xl mx-auto py-8"
+      >
         <button
           onClick={() => setSelectedPost(null)}
-          className="text-indigo-400 hover:underline"
+          className="group flex items-center gap-2 text-text-muted hover:text-accent-pink transition-colors font-bold text-sm uppercase tracking-widest"
         >
-          ← Back to Blogs
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          Back to Insights
         </button>
 
-        <div className="space-y-4">
-          <span className="px-3 py-1 text-xs font-bold uppercase tracking-widest text-indigo-400 border border-indigo-400/30 rounded-full bg-indigo-400/5">
-            {selectedPost.tag}
-          </span>
+        <div className="space-y-8">
+          <div className="space-y-4">
+            <span className="inline-block px-4 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-accent-pink border border-accent-pink/30 rounded-full bg-accent-pink/5">
+              {selectedPost.tag}
+            </span>
 
-          <h1 className="text-4xl font-bold text-white">
-            {selectedPost.title}
-          </h1>
+            <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-text-main leading-[1.1]">
+              {selectedPost.title}
+            </h1>
 
-          <div className="text-sm text-white/40">
-            {selectedPost.date} • {selectedPost.readTime}
+            <div className="flex items-center gap-6 text-sm font-bold text-text-muted uppercase tracking-widest">
+              <span className="flex items-center gap-2 rotate-0"><Calendar className="w-4 h-4" /> {selectedPost.date}</span>
+              <span className="flex items-center gap-2"><Clock className="w-4 h-4" /> {selectedPost.readTime}</span>
+            </div>
+          </div>
+
+          <div className="h-px w-full bg-gradient-to-r from-glass-stroke via-glass-stroke to-transparent" />
+
+          <div className="text-text-muted leading-relaxed whitespace-pre-line text-xl font-medium prose prose-invert max-w-none">
+            {selectedPost.content}
           </div>
         </div>
-
-        <div className="text-white/70 leading-relaxed whitespace-pre-line text-lg">
-          {selectedPost.content}
-        </div>
-
-      </div>
+      </motion.div>
     );
   }
 
-  // 👉 DEFAULT → BLOG CARDS
   return (
-    <div className="space-y-12">
-      
-      <div className="text-center max-w-2xl mx-auto">
-        <h2 className="text-4xl font-bold text-white mb-4">Insights & Thinking</h2>
-        <p className="text-white/60">
-          Sharing ideas on AI, business systems, and data-driven decision making.
+    <div className="space-y-16 py-8">
+      <div className="max-w-3xl">
+        <motion.span 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="text-accent-pink font-black text-xs uppercase tracking-[0.3em] mb-4 block"
+        >
+          Insights & Thinking
+        </motion.span>
+        <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-text-main mb-6">
+          DATA <br />
+          <span className="text-accent-pink italic">INTELLIGENCE</span>
+        </h2>
+        <p className="text-xl text-text-muted font-medium leading-relaxed">
+          Exploring the intersection of business systems, automation, and the future of AI-driven decision making.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {posts.map((post, i) => (
           <motion.div
             key={i}
             onClick={() => setSelectedPost(post)}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all cursor-pointer"
+            className="group glass-card p-6 space-y-6 cursor-pointer hover:border-accent-pink/40 bg-bg-surface/20 flex flex-col justify-between"
           >
-            <div className="flex items-center gap-4 mb-6">
-              <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-indigo-400 border border-indigo-400/30 rounded-full bg-indigo-400/5">
-                {post.tag}
-              </span>
-              <span className="text-xs text-white/40">{post.date}</span>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 text-[9px] font-black uppercase tracking-widest text-accent-pink border border-accent-pink/30 rounded-full bg-accent-pink/5">
+                  {post.tag}
+                </span>
+                <span className="text-[9px] font-black text-text-muted uppercase tracking-widest">{post.date}</span>
+              </div>
+
+              <h3 className={cn(
+                "text-xl font-black transition-colors leading-tight line-clamp-2",
+                post.title.includes("SpendGuardAI") ? "text-accent-pink" : "text-text-main group-hover:text-accent-pink"
+              )}>
+                {post.title}
+              </h3>
+
+              <p className="text-text-muted text-sm font-medium leading-relaxed line-clamp-2">
+                {post.excerpt}
+              </p>
             </div>
 
-            <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-indigo-400 transition-colors">
-              {post.title}
-            </h3>
-
-            <p className="text-white/60 mb-8 leading-relaxed">
-              {post.excerpt}
-            </p>
-
-            <div className="flex items-center justify-between pt-6 border-t border-white/10">
-              <span className="text-xs text-white/40">{post.readTime}</span>
-              <span className="text-sm font-semibold text-white group-hover:translate-x-1 transition-transform">
-                Read Article →
-              </span>
+            <div className="flex items-center justify-between pt-6 border-t border-glass-stroke">
+              <div className="flex items-center gap-2 text-[9px] font-black text-text-muted uppercase tracking-widest">
+                <Clock className="w-3 h-3" />
+                {post.readTime}
+              </div>
+              <div className="flex items-center gap-2 text-xs font-black text-text-main group-hover:text-accent-pink transition-colors">
+                READ
+                <ArrowLeft className="w-3 h-3 rotate-180 group-hover:translate-x-1 transition-transform" />
+              </div>
             </div>
           </motion.div>
         ))}

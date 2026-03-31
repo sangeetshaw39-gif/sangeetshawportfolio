@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+@theme {
+  --color-bg-dark: #05070a;
+  --color-bg-surface: #1a1d23;
+  --color-accent-pink: #f49db5;
+  --color-accent-warm: #b8846b;
+  --color-text-main: #ffffff;
+  --color-text-muted: #9ba1a6;
+  --color-glass-stroke: rgba(229, 178, 178, 0.2);
+  
+  --font-sans: "Inter", "Geist Sans", system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-dark text-text-main font-sans selection:bg-accent-pink/30 selection:text-white antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-bold;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-bg-surface/40 backdrop-blur-xl border border-glass-stroke rounded-2xl transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 bg-gradient-to-r from-accent-pink to-[#c18c8c] text-bg-dark font-bold rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(244,157,181,0.4)];
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3 bg-transparent text-accent-pink border border-accent-pink/30 font-bold rounded-full hover:bg-accent-pink/10 transition-all;
+  }
+
+  .hero-glow {
+    background: radial-gradient(circle at center, rgba(244, 157, 181, 0.15) 0%, rgba(5, 7, 10, 1) 70%);
+  }
+}

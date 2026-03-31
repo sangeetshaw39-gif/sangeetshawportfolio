@@ -9,18 +9,20 @@ interface GlassPanelProps {
 export default function GlassPanel({ children, className }: GlassPanelProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      initial={{ opacity: 0, scale: 0.98, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95, y: -20 }}
-      transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+      exit={{ opacity: 0, scale: 0.98, y: -20 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        "relative w-full max-w-4xl mx-auto p-8 rounded-2xl",
-        "bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl",
+        "relative w-full max-w-5xl mx-auto p-10 rounded-[2rem]",
+        "bg-bg-surface/30 backdrop-blur-3xl border border-glass-stroke shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)]",
         "overflow-hidden",
         className
       )}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-purple-500/10 pointer-events-none" />
+      {/* SUBTLE INNER GLOW */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-pink/20 to-transparent pointer-events-none" />
+      
       <div className="relative z-10">{children}</div>
     </motion.div>
   );

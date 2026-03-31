@@ -1,106 +1,154 @@
 import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Download, Sparkles } from 'lucide-react';
 
 interface HomeProps {
   onViewProjects: () => void;
   onContact: () => void;
+  onAbout: () => void;
 }
 
-export default function Home({ onViewProjects, onContact }: HomeProps) {
+export default function Home({ onViewProjects, onContact, onAbout }: HomeProps) {
   return (
-    <div className="space-y-12 py-12">
+    <div className="space-y-24 py-8">
 
       {/* HERO SECTION */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         
         {/* LEFT CONTENT */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="lg:col-span-7 space-y-10"
         >
-          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase text-indigo-400 border border-indigo-400/30 rounded-full bg-indigo-400/5">
-            AI & Business Analytics Consultant
-          </span>
+          <div className="space-y-6">
+            <motion.span 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 text-[10px] font-bold tracking-[0.2em] uppercase text-accent-pink border border-accent-pink/30 rounded-full bg-accent-pink/5"
+            >
+              <Sparkles className="w-3 h-3" />
+              AI & Business Analytics Consultant
+            </motion.span>
 
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6">
-            Sangeet Shaw
-          </h1>
+            <h1 className="text-6xl md:text-8xl font-black tracking-[-0.04em] leading-[0.9] text-text-main">
+              SANGEET <br />
+              <span className="text-accent-pink">SHAW</span>
+            </h1>
 
-          <p className="text-xl text-white/60 max-w-xl leading-relaxed mb-8">
-            Helping businesses transform operations using data, automation, and AI-driven decision making.
-          </p>
+            <p className="text-lg md:text-xl text-text-muted max-w-xl leading-relaxed font-medium">
+              Bridging the gap between <span className="text-text-main">Complex Data</span> and <span className="text-accent-pink italic">Actionable Strategy</span>. Leveraging AI to transform business operations.
+            </p>
+          </div>
 
           {/* BUTTONS */}
-          <div className="flex flex-wrap gap-4">
-            
+          <div className="flex flex-wrap gap-5">
             <button
               onClick={onViewProjects}
-              className="group px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-white/90 transition-all flex items-center gap-2"
+              className="btn-primary group flex items-center gap-3"
             >
-              View Projects
+              Explore Work
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
 
             <button
               onClick={onContact}
-              className="px-8 py-4 bg-white/5 text-white font-semibold rounded-full border border-white/10 hover:bg-white/10 transition-all"
+              className="btn-secondary"
             >
-              Contact Me
+              Get in Touch
             </button>
 
-            {/* 🔥 RESUME BUTTON */}
             <a
               href="/assets/sangeetshawresume.pdf"
               target="_blank"
-              className="px-8 py-4 bg-indigo-500 text-white font-semibold rounded-full hover:bg-indigo-600 transition-all"
+              className="flex items-center gap-2 px-6 text-sm font-bold text-text-muted hover:text-accent-pink transition-colors group"
             >
-              View Resume
+              <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+              Resume
             </a>
-
           </div>
         </motion.div>
 
-        {/* RIGHT IMAGE */}
+        {/* RIGHT IMAGE / PORTRAIT */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.4 }}
-          className="flex justify-center"
+          initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-5 relative flex justify-center items-center cursor-pointer group/portrait"
+          onClick={onAbout}
         >
-          <img
-            src="/assets/sangeet.png"
-            alt="Sangeet Shaw"
-            className="w-64 h-64 object-cover rounded-full border border-indigo-500/30 shadow-[0_0_40px_rgba(99,102,241,0.3)]"
-          />
+          <div className="relative w-72 h-72 md:w-96 md:h-96 flex items-center justify-center">
+            {/* AMBIENT GRADIENT GLOW */}
+            <div className="absolute inset-0 bg-accent-pink/20 blur-[100px] rounded-full scale-125 animate-pulse group-hover/portrait:bg-accent-pink/40 transition-colors duration-700" />
+            
+            {/* ROTATING OUTER RING (SVG) */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 border-2 border-dashed border-accent-pink/30 rounded-full"
+            />
+
+            {/* SECONDARY ROTATING RING */}
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-[15px] border border-accent-pink/20 rounded-full"
+            />
+            
+            {/* THIRD CONCENTRIC RING */}
+            <div className="absolute inset-[30px] border border-accent-pink/10 rounded-full" />
+
+            {/* PORTRAIT IMAGE */}
+            <div className="relative w-64 h-64 md:w-80 md:h-80 z-10 group">
+              <div className="absolute inset-0 bg-accent-pink/20 blur-3xl rounded-full scale-110 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <img
+                src="/assets/sangeet.png"
+                alt="Sangeet Shaw"
+                className="w-full h-full object-cover rounded-full border-4 border-accent-pink/30 shadow-[0_0_80px_rgba(244,157,181,0.2)] grayscale-[20%] hover:grayscale-0 transition-all duration-500 relative z-10"
+              />
+              
+            </div>
+          </div>
         </motion.div>
 
       </div>
 
-      {/* SKILLS / VALUE SECTION */}
+      {/* CORE PILLARS */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
         className="grid grid-cols-1 md:grid-cols-3 gap-8"
       >
         {[
           {
+            title: "Actionable Strategy",
+            desc: "Turning raw data into clear, efficient business workflows.",
+            icon: "01"
+          },
+          {
             title: "Business Automation",
-            desc: "Built real-world systems using Google Sheets + Apps Script to automate billing, inventory, and reporting."
+            desc: "Building custom AI-powered dashboards and reporting systems.",
+            icon: "02"
           },
           {
-            title: "Data Analytics",
-            desc: "Performed AI-powered EDA and predictive modeling for financial risk and business insights."
-          },
-          {
-            title: "MSME Consulting",
-            desc: "Helping local businesses adopt digital tools, dashboards, and AI-driven workflows."
+            title: "Data Intelligence",
+            desc: "Advanced EDA to uncover hidden risks and growth opportunities.",
+            icon: "03"
           }
         ].map((item, i) => (
-          <div key={i} className="p-6 rounded-2xl bg-white/5 border border-white/10">
-            <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
-            <p className="text-sm text-white/50 leading-relaxed">{item.desc}</p>
+          <div key={i} className="glass-card group p-8 space-y-4 hover:border-accent-pink/40">
+            <span className="text-4xl font-black text-accent-pink/10 group-hover:text-accent-pink/30 transition-colors leading-none">
+              {item.icon}
+            </span>
+            <h3 className="text-2xl font-bold text-text-main group-hover:text-accent-pink transition-colors">
+              {item.title}
+            </h3>
+            <p className="text-text-muted leading-relaxed font-medium">
+              {item.desc}
+            </p>
           </div>
         ))}
       </motion.div>

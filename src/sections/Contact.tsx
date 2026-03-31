@@ -1,127 +1,133 @@
 import { motion } from 'motion/react';
-import { Mail, Linkedin, Instagram, MessageCircle, Phone } from 'lucide-react';
+import { Mail, Linkedin, Instagram, MessageCircle, Phone, ArrowUpRight, Send, Briefcase } from 'lucide-react';
+
+const contactMethods = [
+  {
+    label: "Email",
+    value: "sangeetshaw39@gmail.com",
+    href: "mailto:sangeetshaw39@gmail.com",
+    icon: <Mail className="w-5 h-5" />
+  },
+  {
+    label: "LinkedIn",
+    value: "Sangeet Shaw",
+    href: "https://www.linkedin.com/in/sangeet-shaw-753148348/",
+    icon: <Linkedin className="w-5 h-5" />
+  },
+  {
+    label: "WhatsApp",
+    value: "+91 62894 77287",
+    href: "https://wa.me/916289477287",
+    icon: <MessageCircle className="w-5 h-5" />
+  },
+  {
+    label: "Instagram",
+    value: "@sangeetshaw_i",
+    href: "https://www.instagram.com/sangeetshaw_i/",
+    icon: <Instagram className="w-5 h-5" />
+  }
+];
 
 export default function Contact() {
   return (
-    <div className="space-y-12">
-      
+    <div className="space-y-24 py-8">
+
       {/* HEADER */}
-      <div className="text-center max-w-2xl mx-auto">
-        <h2 className="text-4xl font-bold text-white mb-4">Get in Touch</h2>
-        <p className="text-white/60">
-          Interested in working together or discussing a project? Let’s connect.
+      <div className="max-w-3xl">
+        <motion.span 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="text-accent-pink font-black text-xs uppercase tracking-[0.3em] mb-4 block"
+        >
+          Let's Build
+        </motion.span>
+        <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-text-main mb-6 leading-tight">
+          IGNITE YOUR <br />
+          <span className="text-accent-pink italic">OPERATIONS</span>
+        </h2>
+        <p className="text-xl text-text-muted font-medium leading-relaxed">
+          Open for consulting, collaborative projects, or discussions on how data can transform your business.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         
-        {/* LEFT SIDE */}
-        <div className="space-y-8">
-          
-          {/* CONTACT INFO */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-bold text-white">Contact Information</h3>
-
-            <div className="space-y-4">
-              
-              {/* EMAIL */}
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                <div className="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-xs text-white/40 uppercase tracking-widest">Email</div>
-                  <a
-                    href="mailto:sangeetshaw39@gmail.com?subject=Project Inquiry&body=Hi Sangeet, I would like to discuss a project with you."
-                    className="text-white hover:underline"
-                  >
-                    sangeetshaw39@gmail.com
-                  </a>
-                </div>
+        {/* LEFT COLUMN: CONTACT CHANNELS */}
+        <div className="lg:col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {contactMethods.map((method, i) => (
+            <motion.a
+              key={i}
+              href={method.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="group glass-card p-8 flex flex-col items-center text-center space-y-4 hover:border-accent-pink/40 hover:bg-accent-pink/5"
+            >
+              <div className="w-14 h-14 flex items-center justify-center bg-bg-surface border border-glass-stroke rounded-2xl text-accent-pink group-hover:scale-110 transition-transform">
+                {method.icon}
               </div>
-
-              {/* PHONE */}
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
-                <div className="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-xs text-white/40 uppercase tracking-widest">Phone</div>
-                  <div className="text-white">+91 62894 77287</div>
-                </div>
+              <div className="space-y-1">
+                <span className="text-[10px] font-black uppercase tracking-widest text-text-muted">{method.label}</span>
+                <p className="text-text-main font-bold truncate max-w-full">{method.value}</p>
               </div>
-
-            </div>
-          </div>
-
-          {/* SOCIAL */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-bold text-white">Social Presence</h3>
-
-            <div className="flex gap-4">
-              
-              {/* LINKEDIN */}
-              <a
-                href="https://www.linkedin.com/in/sangeet-shaw-753148348/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 hover:border-indigo-500/50 transition-all"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-
-              {/* INSTAGRAM */}
-              <a
-                href="https://www.instagram.com/sangeetshaw_i/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 hover:border-indigo-500/50 transition-all"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-
-            </div>
-          </div>
-
+              <ArrowUpRight className="w-4 h-4 text-accent-pink/40 group-hover:text-accent-pink transition-colors" />
+            </motion.a>
+          ))}
         </div>
 
-        {/* RIGHT SIDE (ACTION PANEL) */}
-        <div className="space-y-6 p-8 rounded-2xl bg-white/5 border border-white/10">
-
-          {/* WHAT I DO */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">What I Can Help You With</h3>
-
-            <ul className="space-y-3 text-white/70">
-              <li>• Automating billing & inventory systems</li>
-              <li>• Building dashboards (Power BI / Excel)</li>
-              <li>• Data analysis for business decisions</li>
-              <li>• MSME digital transformation</li>
-              <li>• AI-driven workflow optimization</li>
+        {/* BOTTOM SECTION: SERVICES & RESUME */}
+        <div className="lg:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="glass-card p-10 space-y-8"
+          >
+            <div className="flex items-center gap-4">
+              <Briefcase className="w-6 h-6 text-accent-pink" />
+              <h3 className="text-2xl font-black text-text-main">EXPERTISE</h3>
+            </div>
+            
+            <ul className="space-y-4">
+              {[
+                "End-to-End Inventory Automation",
+                "Custom Financial Dashboarding",
+                "Retail Revenue Optimization",
+                "AI-Powered Workflow Analysis"
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-4 text-text-muted font-medium">
+                  <div className="w-1.5 h-1.5 bg-accent-pink rounded-full" />
+                  {item}
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
-          {/* WHATSAPP BUTTON */}
-          <a
-            href="https://wa.me/916289477287"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full py-4 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition-all flex items-center justify-center gap-2"
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="glass-card p-10 flex flex-col justify-between space-y-10 group bg-accent-pink/5 hover:bg-accent-pink/10"
           >
-            <MessageCircle className="w-5 h-5" />
-            Chat on WhatsApp
-          </a>
+            <div className="space-y-4 text-center md:text-left">
+              <h3 className="text-3xl font-black text-text-main">READY TO START?</h3>
+              <p className="text-lg text-text-muted font-medium">
+                Download my full resume for a detailed view of my technical skills and project history.
+              </p>
+            </div>
 
-          {/* RESUME BUTTON */}
-          <a
-            href="/assets/sangeetshawresume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full py-4 bg-indigo-500 text-white font-bold rounded-xl hover:bg-indigo-600 transition-all flex items-center justify-center gap-2"
-          >
-            View Resume
-          </a>
-
+            <a
+              href="/assets/sangeetshawresume.pdf"
+              target="_blank"
+              className="btn-primary w-full flex items-center justify-center gap-3"
+            >
+              Download Full Resume
+              <Send className="w-4 h-4" />
+            </a>
+          </motion.div>
         </div>
 
       </div>

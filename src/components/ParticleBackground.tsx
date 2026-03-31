@@ -29,10 +29,11 @@ function Particles() {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="#6366f1"
-          size={0.005}
+          color="#f49db5"
+          size={0.006}
           sizeAttenuation={true}
           depthWrite={false}
+          blending={THREE.AdditiveBlending}
         />
       </Points>
     </group>
@@ -41,7 +42,7 @@ function Particles() {
 
 export default function ParticleBackground() {
   return (
-    <div className="fixed inset-0 -z-10 bg-[#020617]">
+    <div className="fixed inset-0 -z-10 bg-[#05070a]">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Particles />
       </Canvas>
