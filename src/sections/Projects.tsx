@@ -1,248 +1,189 @@
-import React, { useRef, useState } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-import { ExternalLink, Layers, Target, Zap } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion } from 'motion/react';
+import { ExternalLink, Target, Zap, LayoutGrid, Layers, ArrowUpRight } from 'lucide-react';
+import { cn } from '../lib/utils';
 
 const projects = [
   {
-    title: "SpendGuardAI",
-    tag: "FLAGSHIP SYSTEM",
+    title: "SpendGuard AI",
+    tag: "FINTECH SYSTEM",
     isFeatured: true,
-    route: "/case-study/spendguardai",
-    description: "AI-powered financial analysis system that helps businesses understand spending patterns, detect inefficiencies, and make smarter decisions.",
-    highlights: [
-      "Automated data cleaning pipeline",
-      "Smart expense categorization",
-      "Insight generation (AI + fallback logic)",
-      "Decision-focused output for businesses"
-    ],
-    workflow: ["Upload", "Clean", "Analyze", "Insights", "Decisions"],
-    link: "https://drive.google.com/drive/folders/1_YxmQXA2LhvWGa9bb-fTXuhPswnqR35a",
-    officialLink: "https://spendguardai.vercel.app/",
-    btnText: "📊 View Case Study",
-    tooltip: "Explore full product breakdown, architecture, and insights",
-    icon: <Target className="w-6 h-6" />
+    route: "case-study-spendguardai",
+    link: "https://spendguardai.vercel.app/",
+    description: "A financial data processing system that transforms inconsistent expense data into structured insights using a hybrid pipeline of rule-based validation and AI-assisted analysis.",
+    impact: "Standardizes messy financial data and highlights high-risk spending patterns for faster analysis",
+    tech: ["Gemini AI", "FastAPI", "Supabase", "Javascript UI"],
+    image: "/assets/SPENDGUARDAI.png",
+    icon: <Target className="w-5 h-5" />
   },
   {
-    title: "FIFO Inventory Intelligence System",
-    problem: "Manual stock tracking causing reporting inefficiencies.",
-    solution: "Designed automated FIFO logic using Google Sheets + Apps Script with real-time dashboards.",
-    features: ["Automated FIFO tracking", "Real-time inventory dashboard", "Error reduction system"],
-    impact: "Reduced manual errors and improved inventory visibility.",
+    title: "FIFO Inventory Intelligence",
+    tag: "LOGISTICS ENGINE",
+    route: "case-study-fifo",
     link: "https://drive.google.com/drive/folders/13k2bVpFxBIr728i9hX_AqnsMJ-iWg4a_",
-    icon: <Layers className="w-6 h-6" />
+    description: "A structured inventory tracking system built using Google Sheets and Apps Script to manage stock movement based on FIFO logic, reducing manual tracking errors and improving visibility across inventory flows.",
+    impact: "Brings consistency to inventory tracking by automating FIFO-based stock movement and reducing dependency on manual logs",
+    tech: ["APPS SCRIPT", "GOOGLE SHEETS", "INVENTORY LOGIC", "DASHBOARDING"],
+    image: "/assets/FIFO.png",
+    icon: <Layers className="w-5 h-5" />
   },
   {
-    title: "GST Billing Automation Engine",
-    problem: "Manual GST invoicing and fragmented customer records.",
-    solution: "Built automated billing system with customer database and stock integration.",
-    features: ["GST billing automation", "Customer database", "Revenue dash", "Stock lookup"],
-    impact: "Reduced billing time, minimized errors, improved financial clarity.",
+    title: "GST Billing Automation",
+    tag: "FINANCIAL SYSTEM",
+    route: "case-study-bill",
     link: "https://drive.google.com/drive/folders/1ElkFZjWs34ARfNYrkRNAxK2hpKPXhI1e",
-    icon: <Zap className="w-6 h-6" />
+    description: "A workflow automation system built on Google Sheets and Apps Script to streamline GST invoicing by integrating customer records, product lookup, and automated bill generation.",
+    impact: "Reduces manual billing effort by automating invoice creation and maintaining structured customer and transaction records",
+    tech: ["AUTOMATION", "GOOGLE SHEETS", "APPS SCRIPT", "MSME TOOLS"],
+    image: "/assets/BILL.png",
+    icon: <Zap className="w-5 h-5" />
   },
   {
     title: "Retail Revenue Intelligence",
-    problem: "No visibility on customer-level revenue and churn risk.",
-    solution: "Built Python-based RFM model with Power BI dashboard.",
-    features: ["RFM segmentation", "Customer value analysis", "Revenue insights"],
-    impact: "Identified 8% customers generating ~44% revenue.",
+    tag: "DATA ANALYTICS",
+    route: "case-study-rfm",
     link: "/assets/rfm_revenue_intelligence_dashboard.pdf",
-    icon: <Target className="w-6 h-6" />
+    description: "A customer-level revenue analysis model built using Python and Power BI to identify spending patterns, segment users, and highlight high-value customer groups using RFM-based logic.",
+    impact: "Helps identify high-value customer segments and understand revenue concentration patterns for better targeting decisions",
+    tech: ["PYTHON", "POWER BI", "RFM ANALYSIS", "DATA VISUALIZATION"],
+    image: "/assets/RFM.png",
+    icon: <LayoutGrid className="w-5 h-5" />
   }
 ];
 
-function ProjectCard({ project, index, onViewCaseStudy }: { project: any, index: number, onViewCaseStudy: () => void }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
+function ProjectCard({ project, onViewCaseStudy }: { project: any, onViewCaseStudy: (route: string) => void }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.02 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      onMouseMove={handleMouseMove}
-      className={`group relative glass-card p-10 overflow-hidden transition-shadow duration-300 hover:shadow-2xl hover:shadow-accent-pink/10 ${project.isFeatured ? 'border-accent-pink/40 bg-accent-pink/[0.02]' : ''
-        }`}
+      transition={{ duration: 0.5 }}
+      className="group relative glass-card p-6 ghost-border flex flex-col hover:-translate-y-2 transition-all duration-500"
     >
-      {/* FEATURED BADGE */}
-      {project.isFeatured && (
-        <div className="absolute top-0 right-0 px-6 py-2 bg-accent-pink text-[10px] font-black text-bg-dark rounded-bl-2xl uppercase tracking-widest z-20">
-          Featured
+      {/* Project Image Section */}
+      <div className="overflow-hidden mb-6 aspect-video bg-bg-surface relative rounded-lg">
+        <img 
+          src={project.image} 
+          alt={project.title} 
+          className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+        {project.isFeatured && (
+          <div className="absolute top-4 right-4 px-3 py-1 bg-primary text-bg-dark font-black text-[10px] uppercase tracking-widest rounded-full z-20">
+            Featured
+          </div>
+        )}
+      </div>
+
+      <div className="flex-grow flex flex-col">
+        <div className="flex justify-between items-start mb-4">
+          <div>
+            <span className="font-headline text-[10px] uppercase tracking-widest text-secondary block mb-1">
+              {project.tag}
+            </span>
+            <h3 className="font-headline text-3xl font-bold tracking-tight text-text-main group-hover:text-primary transition-colors">
+              {project.title}
+            </h3>
+          </div>
+          <div className="p-2 border border-primary/20 rounded-full text-primary group-hover:bg-primary group-hover:text-bg-dark transition-all">
+            {project.icon}
+          </div>
         </div>
-      )}
 
-      {/* SPOTLIGHT EFFECT */}
-      <motion.div
-        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{
-          background: useTransform(
-            [mouseX, mouseY],
-            ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(244, 157, 181, 0.1), transparent 40%)`
-          ),
-        }}
-      />
+        <p className="text-sm text-text-muted mb-8 leading-relaxed">
+          {project.description}
+        </p>
 
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12">
-        {/* LEFT COLUMN */}
-        <div className="lg:col-span-12 xl:col-span-7 space-y-8">
-          <div className="flex items-center gap-4">
-            <div className={`p-3 rounded-xl border transition-colors ${project.isFeatured ? 'bg-accent-pink/20 text-accent-pink border-accent-pink/40' : 'bg-accent-pink/10 text-accent-pink border-accent-pink/20'
-              }`}>
-              {project.icon}
-            </div>
-            <div className="space-y-1">
-              {project.tag && (
-                <span className="text-[10px] font-black tracking-[0.2em] text-accent-pink uppercase">{project.tag}</span>
+        {/* Impact HUD */}
+        <div className="p-4 bg-primary/5 border border-primary/10 rounded-sm mb-8">
+          <span className="text-[10px] text-primary uppercase tracking-widest block mb-1">Key Impact</span>
+          <p className="text-sm font-bold text-text-main">{project.impact}</p>
+        </div>
+
+        <div className="mt-auto flex flex-wrap gap-2 mb-8">
+          {project.tech.map((t: string, i: number) => (
+            <span key={i} className="px-2 py-1 bg-bg-surface/50 border border-primary/10 rounded text-[9px] uppercase tracking-widest text-text-muted">
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-3">
+          {project.route && (
+            <button
+              onClick={() => onViewCaseStudy(project.route)}
+              className="w-full flex items-center justify-center gap-3 py-4 bg-primary text-bg-dark font-bold text-xs tracking-widest uppercase hover:brightness-110 active:scale-95 transition-all"
+            >
+              Case Study
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
+          )}
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                "w-full flex items-center justify-center gap-3 py-4 border border-primary/30 text-primary font-bold text-xs tracking-widest uppercase hover:bg-primary/5 active:scale-95 transition-all",
+                !project.route && "bg-primary text-bg-dark border-none"
               )}
-              <h3 className="text-3xl md:text-4xl font-black tracking-tight text-text-main group-hover:text-accent-pink transition-colors">
-                {project.title}
-              </h3>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            {project.description ? (
-              <div className="space-y-6">
-                <p className="text-xl text-text-muted font-medium leading-relaxed max-w-2xl">
-                  {project.description}
-                </p>
-
-                {project.highlights && (
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {project.highlights.map((h: string, i: number) => (
-                      <li key={i} className="flex items-center gap-3 text-sm font-bold text-text-muted/80">
-                        <div className="w-1.5 h-1.5 rounded-full bg-accent-pink/60" />
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                {project.workflow && (
-                  <div className="pt-4 flex items-center gap-2 text-[10px] font-black text-text-muted/40 uppercase tracking-widest overflow-x-auto whitespace-nowrap scrollbar-hide">
-                    {project.workflow.map((step: string, i: number) => (
-                      <React.Fragment key={i}>
-                        <span>{step}</span>
-                        {i < project.workflow.length - 1 && <span className="text-accent-pink/20">→</span>}
-                      </React.Fragment>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-3">
-                  <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-pink/60">Problem</h4>
-                  <p className="text-text-muted font-medium leading-relaxed">{project.problem}</p>
-                </div>
-                <div className="space-y-3">
-                  <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-pink/60">Solution</h4>
-                  <p className="text-text-muted font-medium leading-relaxed">{project.solution}</p>
-                </div>
-              </div>
-            )}
-
-            {project.features && (
-              <div className="flex flex-wrap gap-3">
-                {project.features.map((feature: string, i: number) => (
-                  <span key={i} className="px-4 py-1.5 bg-bg-surface/50 border border-glass-stroke rounded-full text-xs font-bold text-text-muted">
-                    {feature}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* RIGHT COLUMN */}
-        <div className="lg:col-span-12 xl:col-span-5 flex flex-col justify-between space-y-8">
-          <div className="p-6 bg-accent-pink/5 border border-accent-pink/10 rounded-2xl">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-pink mb-3">
-              {project.isFeatured ? 'Core Value' : 'Key Impact'}
-            </h4>
-            <p className="text-lg font-bold text-text-main leading-snug">
-              {project.isFeatured ? 'Actionable Intelligence for Business Survival' : project.impact}
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {project.officialLink && (
-              <a
-                href={project.officialLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary w-full flex items-center justify-center gap-3 text-center"
-              >
-                Visit Official Site
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            )}
-
-            {project.route ? (
-              <button
-                onClick={onViewCaseStudy}
-                title={project.tooltip}
-                className="group/btn w-full py-4 border border-glass-stroke rounded-2xl flex items-center justify-center gap-3 font-bold bg-bg-surface/50 text-text-main hover:bg-accent-pink/10 hover:border-accent-pink transition-all duration-300"
-              >
-                {project.btnText || "Detailed Case Study"}
-                <Zap className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-              </button>
-            ) : (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={project.tooltip}
-                className={`group/btn w-full py-4 border rounded-2xl flex items-center justify-center gap-3 font-bold transition-all duration-300 ${project.isFeatured
-                    ? 'bg-bg-surface/50 border-glass-stroke text-text-main hover:bg-accent-pink/10 hover:border-accent-pink'
-                    : 'bg-bg-surface/50 border-glass-stroke text-text-main hover:bg-accent-pink hover:text-bg-dark hover:border-accent-pink'
-                  }`}
-              >
-                {project.btnText || "Detailed Case Study"}
-                <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-              </a>
-            )}
-          </div>
+            >
+              {project.route ? "Visit Live Site" : "View System"}
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          )}
         </div>
       </div>
     </motion.div>
   );
 }
 
-export default function Projects({ onViewCaseStudy }: { onViewCaseStudy: () => void }) {
+export default function Projects({ onViewCaseStudy, onContact }: { onViewCaseStudy: (route: string) => void, onContact: () => void }) {
   return (
     <div className="space-y-16 py-8">
-      <div className="max-w-3xl">
-        <motion.span
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="text-accent-pink font-black text-xs uppercase tracking-[0.3em] mb-4 block"
-        >
-          Selected Work
-        </motion.span>
-        <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-text-main mb-6">
-          ACTIONABLE <br />
-          <span className="text-accent-pink italic">STRATEGY</span>
-        </h2>
-        <p className="text-xl text-text-muted font-medium leading-relaxed">
-          Real-world systems engineered to solve high-impact business problems. Focused on automation, risk mitigation, and intelligent growth.
+      <div className="flex flex-col md:flex-row justify-between items-end gap-8">
+        <div className="max-w-2xl">
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-primary font-headline text-xs uppercase tracking-[0.3em] mb-4 block"
+          >
+            Archive / Selected Work
+          </motion.span>
+          <h2 className="text-5xl md:text-7xl font-headline font-bold tracking-tighter text-text-main leading-none">
+            ACTIONABLE <br />
+            <span className="text-secondary italic font-light">STRATEGY.</span>
+          </h2>
+        </div>
+        <p className="text-text-muted text-sm uppercase tracking-widest max-w-[200px] leading-relaxed hidden md:block">
+          Scroll to explore architectural interventions in data systems.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {projects.map((project, i) => (
-          <ProjectCard key={i} project={project} index={i} onViewCaseStudy={onViewCaseStudy} />
+          <ProjectCard key={i} project={project} onViewCaseStudy={onViewCaseStudy} />
         ))}
       </div>
+
+      {/* Process CTA */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        className="glass-card p-12 text-center ghost-border bg-primary/5 space-y-6"
+      >
+        <h3 className="text-3xl font-headline font-bold text-text-main">Ready to Engineer the Future?</h3>
+        <p className="text-text-muted max-w-xl mx-auto">
+          Currently taking selective commissions for MSME systems and custom AI analytics dashboards.
+        </p>
+        <div className="pt-4">
+          <button 
+            onClick={onContact}
+            className="px-10 py-4 bg-primary text-bg-dark font-bold tracking-widest uppercase text-xs hover:px-14 transition-all duration-300"
+          >
+            Initiate Contact
+          </button>
+        </div>
+      </motion.div>
     </div>
   );
 }

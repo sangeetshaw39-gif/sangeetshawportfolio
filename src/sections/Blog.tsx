@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
-import { ArrowLeft, BookOpen, Calendar, Clock, Sparkles } from 'lucide-react';
+import { ArrowLeft, BookOpen, Calendar, Clock, Sparkles, ArrowRight, ChevronRight } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 
 const posts = [
@@ -204,7 +204,7 @@ The Problem Nobody Talks About
 
 AI is everywhere.
 
-Everywhere you look, people are building tools, dashboards, agents…
+Everyway you look, people are building tools, dashboards, agents…
 But here’s something I noticed while working with real businesses:
 
 Most businesses don’t actually understand their own spending.
@@ -332,102 +332,103 @@ export default function Blog() {
   if (selectedPost) {
     return (
       <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="space-y-12 max-w-4xl mx-auto py-8"
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.98 }}
+        className="space-y-12 max-w-4xl mx-auto py-12"
       >
         <button
           onClick={() => setSelectedPost(null)}
-          className="group flex items-center gap-2 text-text-muted hover:text-accent-pink transition-colors font-bold text-sm uppercase tracking-widest"
+          className="group flex items-center gap-3 text-text-muted hover:text-primary transition-all font-bold text-[10px] uppercase tracking-[0.3em]"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Back to Insights
+          Archive / Journals
         </button>
 
-        <div className="space-y-8">
-          <div className="space-y-4">
-            <span className="inline-block px-4 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-accent-pink border border-accent-pink/30 rounded-full bg-accent-pink/5">
+        <article className="space-y-12">
+          <div className="space-y-6">
+            <span className="inline-block px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.2em] text-primary border border-primary/30 rounded-sm bg-primary/5">
               {selectedPost.tag}
             </span>
 
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-text-main leading-[1.1]">
+            <h1 className="text-5xl md:text-7xl font-headline font-bold text-text-main leading-[1] tracking-tighter">
               {selectedPost.title}
             </h1>
 
-            <div className="flex items-center gap-6 text-sm font-bold text-text-muted uppercase tracking-widest">
-              <span className="flex items-center gap-2 rotate-0"><Calendar className="w-4 h-4" /> {selectedPost.date}</span>
-              <span className="flex items-center gap-2"><Clock className="w-4 h-4" /> {selectedPost.readTime}</span>
+            <div className="flex items-center gap-8 text-[10px] font-headline uppercase tracking-widest text-text-muted/60">
+              <span className="flex items-center gap-2 font-bold"><Calendar className="w-4 h-4 text-primary/40" /> {selectedPost.date}</span>
+              <span className="flex items-center gap-2 font-bold"><Clock className="w-4 h-4 text-primary/40" /> {selectedPost.readTime}</span>
             </div>
           </div>
 
-          <div className="h-px w-full bg-gradient-to-r from-glass-stroke via-glass-stroke to-transparent" />
+          <div className="h-px w-full bg-gradient-to-r from-primary/30 via-primary/10 to-transparent" />
 
-          <div className="text-text-muted leading-relaxed whitespace-pre-line text-xl font-medium prose prose-invert max-w-none">
+          <div className="text-text-muted leading-relaxed whitespace-pre-line text-lg font-medium prose prose-invert max-w-none">
             {selectedPost.content}
           </div>
-        </div>
+        </article>
       </motion.div>
     );
   }
 
   return (
-    <div className="space-y-16 py-8">
-      <div className="max-w-3xl">
-        <motion.span 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="text-accent-pink font-black text-xs uppercase tracking-[0.3em] mb-4 block"
-        >
-          Insights & Thinking
-        </motion.span>
-        <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-text-main mb-6">
-          DATA <br />
-          <span className="text-accent-pink italic">INTELLIGENCE</span>
-        </h2>
-        <p className="text-xl text-text-muted font-medium leading-relaxed">
-          Exploring the intersection of business systems, automation, and the future of AI-driven decision making.
-        </p>
+    <div className="space-y-24 py-12">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+        <div className="max-w-3xl">
+          <motion.span 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-primary font-headline text-xs uppercase tracking-[0.3em] mb-6 block"
+          >
+            Archive // Ideas, Systems & Execution
+          </motion.span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-headline font-bold tracking-tighter text-text-main leading-[1.1] mb-8 uppercase">
+            Thinking in Systems. <br />
+            <span className="text-secondary italic font-light">Writing in Data.</span>
+          </h2>
+          <p className="text-lg text-text-muted font-medium leading-relaxed max-w-2xl border-l-2 border-primary/20 pl-6 italic">
+            A collection of breakdowns, experiments, and practical insights from building real-world data systems and automation workflows.
+          </p>
+        </div>
+        <div className="text-left md:text-right space-y-4">
+          <p className="font-headline text-[10px] uppercase tracking-[0.3em] text-text-muted/40 font-black">
+            Current Focus<br />
+            <span className="text-primary">Real-world systems & practical data workflows</span>
+          </p>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="space-y-4">
         {posts.map((post, i) => (
           <motion.div
             key={i}
             onClick={() => setSelectedPost(post)}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="group glass-card p-6 space-y-6 cursor-pointer hover:border-accent-pink/40 bg-bg-surface/20 flex flex-col justify-between"
+            transition={{ delay: i * 0.05 }}
+            className="group block py-10 px-8 glass-card bg-bg-surface/20 hover:bg-primary/5 transition-all border-b border-primary/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 cursor-pointer relative overflow-hidden"
           >
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 text-[9px] font-black uppercase tracking-widest text-accent-pink border border-accent-pink/30 rounded-full bg-accent-pink/5">
-                  {post.tag}
-                </span>
-                <span className="text-[9px] font-black text-text-muted uppercase tracking-widest">{post.date}</span>
-              </div>
-
-              <h3 className={cn(
-                "text-xl font-black transition-colors leading-tight line-clamp-2",
-                post.title.includes("SpendGuardAI") ? "text-accent-pink" : "text-text-main group-hover:text-accent-pink"
-              )}>
+            <div className="absolute inset-0 bg-primary/5 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700" />
+            
+            <div className="relative z-10 space-y-4 max-w-3xl">
+              <span className="font-headline text-[9px] uppercase text-secondary tracking-[0.3em] font-bold block">
+                {post.date} // {post.tag}
+              </span>
+              <h3 className="text-2xl md:text-3xl font-headline font-bold text-text-main group-hover:text-primary transition-colors leading-tight">
                 {post.title}
               </h3>
-
               <p className="text-text-muted text-sm font-medium leading-relaxed line-clamp-2">
                 {post.excerpt}
               </p>
             </div>
-
-            <div className="flex items-center justify-between pt-6 border-t border-glass-stroke">
-              <div className="flex items-center gap-2 text-[9px] font-black text-text-muted uppercase tracking-widest">
-                <Clock className="w-3 h-3" />
+            
+            <div className="relative z-10 flex items-center gap-6">
+              <span className="font-headline text-[10px] uppercase tracking-widest text-text-muted/40 font-bold hidden xl:block">
                 {post.readTime}
-              </div>
-              <div className="flex items-center gap-2 text-xs font-black text-text-main group-hover:text-accent-pink transition-colors">
-                READ
-                <ArrowLeft className="w-3 h-3 rotate-180 group-hover:translate-x-1 transition-transform" />
+              </span>
+              <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-bg-dark group-hover:translate-x-2 transition-all">
+                <ChevronRight className="w-6 h-6" />
               </div>
             </div>
           </motion.div>

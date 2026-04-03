@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Download, Sparkles } from 'lucide-react';
+import { ArrowRight, Download, Sparkles, LayoutGrid, Zap, Database } from 'lucide-react';
 
 interface HomeProps {
   onViewProjects: () => void;
@@ -9,150 +9,122 @@ interface HomeProps {
 
 export default function Home({ onViewProjects, onContact, onAbout }: HomeProps) {
   return (
-    <div className="space-y-24 py-8">
+    <div className="relative min-h-[85vh] flex flex-col justify-center px-4 overflow-hidden">
+      {/* Background Hero Glow - Fixed and Optimized */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full pointer-events-none -z-10 animate-pulse duration-5000"></div>
 
-      {/* HERO SECTION */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
         
-        {/* LEFT CONTENT */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="lg:col-span-7 space-y-10"
-        >
-          <div className="space-y-6">
-            <motion.span 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 text-[10px] font-bold tracking-[0.2em] uppercase text-accent-pink border border-accent-pink/30 rounded-full bg-accent-pink/5"
-            >
-              <Sparkles className="w-3 h-3" />
-              AI & Business Analytics Consultant
-            </motion.span>
-
-            <h1 className="text-6xl md:text-8xl font-black tracking-[-0.04em] leading-[0.9] text-text-main">
+        {/* Left: Text Content */}
+        <div className="lg:col-span-7 order-2 lg:order-1 space-y-10">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <span className="font-headline text-[10px] uppercase tracking-[0.3em] text-secondary mb-6 block border-l-2 border-primary pl-4">
+              PORTFOLIO
+            </span>
+            <h1 className="font-headline text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter leading-[0.8] mb-4 text-text-main text-glow">
               SANGEET <br />
-              <span className="text-accent-pink">SHAW</span>
+              <span className="text-secondary italic font-light drop-shadow-[0_0_15px_rgba(244,157,181,0.3)]">SHAW.</span>
             </h1>
-
-            <p className="text-lg md:text-xl text-text-muted max-w-xl leading-relaxed font-medium">
-              Bridging the gap between <span className="text-text-main">Complex Data</span> and <span className="text-accent-pink italic">Actionable Strategy</span>. Leveraging AI to transform business operations.
+            <p className="font-headline text-[9px] md:text-[11px] uppercase tracking-[0.4em] text-primary font-black mb-10">
+              BUILDING SYSTEMS THAT MAKE DATA USABLE.
             </p>
-          </div>
+            <div className="space-y-6 max-w-xl mb-10">
+              <p className="text-lg text-text-muted font-body leading-relaxed">
+                Designing and building data-driven systems that clean, structure, and analyze messy business data — turning it into usable insights for real-world decision-making.
+              </p>
+              <p className="text-sm text-text-muted/80 font-medium leading-relaxed border-l border-white/10 pl-6 italic">
+                Focused on financial analysis, automation, and practical AI applications across MSMEs and business workflows.
+              </p>
+            </div>
 
-          {/* BUTTONS */}
-          <div className="flex flex-wrap gap-5">
-            <button
-              onClick={onViewProjects}
-              className="btn-primary group flex items-center gap-3"
-            >
-              Explore Work
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <div className="flex flex-wrap gap-6 items-center">
+              <button 
+                onClick={onViewProjects}
+                className="bg-primary text-on-primary px-10 py-4 font-bold tracking-tight rounded-sm hover:scale-95 transition-all shadow-[0_0_30px_rgba(255,193,208,0.3)] flex items-center gap-3"
+              >
+                View Projects
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <button 
+                onClick={onAbout}
+                className="ghost-border text-primary px-10 py-4 font-bold tracking-tight hover:bg-primary/5 transition-colors rounded-sm"
+              >
+                How I Build
+              </button>
+            </div>
+          </motion.div>
 
-            <button
-              onClick={onContact}
-              className="btn-secondary"
-            >
-              Get in Touch
-            </button>
-
-            <a
-              href="/assets/sangeetshawresume.pdf"
-              target="_blank"
-              className="flex items-center gap-2 px-6 text-sm font-bold text-text-muted hover:text-accent-pink transition-colors group"
-            >
-              <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
-              Resume
-            </a>
-          </div>
-        </motion.div>
-
-        {/* RIGHT IMAGE / PORTRAIT */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-5 relative flex justify-center items-center cursor-pointer group/portrait"
-          onClick={onAbout}
-        >
-          <div className="relative w-72 h-72 md:w-96 md:h-96 flex items-center justify-center">
-            {/* AMBIENT GRADIENT GLOW */}
-            <div className="absolute inset-0 bg-accent-pink/20 blur-[100px] rounded-full scale-125 animate-pulse group-hover/portrait:bg-accent-pink/40 transition-colors duration-700" />
-            
-            {/* ROTATING OUTER RING (SVG) */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 border-2 border-dashed border-accent-pink/30 rounded-full"
-            />
-
-            {/* SECONDARY ROTATING RING */}
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-[15px] border border-accent-pink/20 rounded-full"
-            />
-            
-            {/* THIRD CONCENTRIC RING */}
-            <div className="absolute inset-[30px] border border-accent-pink/10 rounded-full" />
-
-            {/* PORTRAIT IMAGE */}
-            <div className="relative w-64 h-64 md:w-80 md:h-80 z-10 group">
-              <div className="absolute inset-0 bg-accent-pink/20 blur-3xl rounded-full scale-110 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <img
-                src="/assets/sangeet.png"
-                alt="Sangeet Shaw"
-                className="w-full h-full object-cover rounded-full border-4 border-accent-pink/30 shadow-[0_0_80px_rgba(244,157,181,0.2)] grayscale-[20%] hover:grayscale-0 transition-all duration-500 relative z-10"
-              />
-              
+          {/* Core Pillars Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+            <div className="glass-card p-6 ghost-border space-y-4 group hover:bg-primary/5 transition-all">
+              <div className="w-10 h-10 bg-primary/10 rounded-sm flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                <Database className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-[10px] uppercase tracking-widest text-primary font-black mb-1">System Design</div>
+                <div className="text-xs text-text-muted leading-relaxed">Builds end-to-end data pipelines from ingestion to insight generation</div>
+              </div>
+            </div>
+            <div className="glass-card p-6 ghost-border space-y-4 group hover:bg-secondary/5 transition-all">
+              <div className="w-10 h-10 bg-secondary/10 rounded-sm flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+                <Zap className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-[10px] uppercase tracking-widest text-secondary font-black mb-1">Automation</div>
+                <div className="text-xs text-text-muted leading-relaxed">Reduces manual workflows using scripts, structured logic, and integrations</div>
+              </div>
+            </div>
+            <div className="glass-card p-6 ghost-border space-y-4 group hover:bg-primary/5 transition-all">
+              <div className="w-10 h-10 bg-primary/10 rounded-sm flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                <LayoutGrid className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-[10px] uppercase tracking-widest text-primary font-black mb-1">Data Analysis</div>
+                <div className="text-xs text-text-muted leading-relaxed">Transforms raw datasets into interpretable business insights</div>
+              </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
+        {/* Right: Portrait Image with Refined Glow */}
+        <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end relative">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-sm aspect-square group cursor-pointer"
+            onClick={onAbout}
+          >
+            {/* Multi-layered Glass Borders */}
+            <div className="absolute inset-0 border-[0.5pt] border-primary/20 rotate-3 group-hover:rotate-6 transition-transform duration-700"></div>
+            <div className="absolute inset-0 border-[0.5pt] border-secondary/20 -rotate-3 group-hover:-rotate-6 transition-transform duration-700"></div>
+            
+            {/* The Main Glow Effect Behind Image */}
+            <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-110 opacity-70 group-hover:opacity-100 transition-opacity duration-1000 -z-10"></div>
+            
+            <div className="w-full h-full glass-card overflow-hidden ghost-border relative z-10 transition-all duration-700 group-hover:shadow-[0_0_80px_rgba(244,157,181,0.25)]">
+              <img 
+                src="/assets/sangeet.png" 
+                alt="Portrait of Sangeet Shaw" 
+                className="w-full h-full object-cover grayscale brightness-90 contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+              />
+              
+              <div className="absolute bottom-4 left-4 right-4 bg-bg-dark/60 backdrop-blur-xl px-4 py-3 ghost-border opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                <div className="space-y-1">
+                  <span className="font-headline text-[9px] uppercase tracking-widest text-primary font-black">Working Style</span>
+                  <p className="text-[10px] text-text-main font-bold leading-tight">Independent • System-focused • Problem-driven</p>
+                  <p className="text-[8px] text-text-muted font-medium opacity-80">Open to projects and real-world problem solving</p>
+                </div>
+              </div>
+            </div>
+
+          </motion.div>
+        </div>
       </div>
-
-      {/* CORE PILLARS */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-8"
-      >
-        {[
-          {
-            title: "Actionable Strategy",
-            desc: "Turning raw data into clear, efficient business workflows.",
-            icon: "01"
-          },
-          {
-            title: "Business Automation",
-            desc: "Building custom AI-powered dashboards and reporting systems.",
-            icon: "02"
-          },
-          {
-            title: "Data Intelligence",
-            desc: "Advanced EDA to uncover hidden risks and growth opportunities.",
-            icon: "03"
-          }
-        ].map((item, i) => (
-          <div key={i} className="glass-card group p-8 space-y-4 hover:border-accent-pink/40">
-            <span className="text-4xl font-black text-accent-pink/10 group-hover:text-accent-pink/30 transition-colors leading-none">
-              {item.icon}
-            </span>
-            <h3 className="text-2xl font-bold text-text-main group-hover:text-accent-pink transition-colors">
-              {item.title}
-            </h3>
-            <p className="text-text-muted leading-relaxed font-medium">
-              {item.desc}
-            </p>
-          </div>
-        ))}
-      </motion.div>
-
     </div>
   );
 }

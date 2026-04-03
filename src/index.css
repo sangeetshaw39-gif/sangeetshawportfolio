@@ -5,20 +5,25 @@
   --color-bg-surface: #1a1d23;
   --color-accent-pink: #f49db5;
   --color-accent-warm: #b8846b;
-  --color-text-main: #ffffff;
+  --color-accent-gold: #c18c8c;
+  --color-text-main: #e1e2e7;
   --color-text-muted: #9ba1a6;
   --color-glass-stroke: rgba(229, 178, 178, 0.2);
+  --color-primary: #ffc1d0;
+  --color-on-primary: #05070a;
+  --color-secondary: #f4ba9e;
   
   --font-sans: "Inter", "Geist Sans", system-ui, sans-serif;
+  --font-headline: "Space Grotesk", "Geist Sans", sans-serif;
 }
 
 @layer base {
   body {
-    @apply bg-bg-dark text-text-main font-sans selection:bg-accent-pink/30 selection:text-white antialiased;
+    @apply bg-bg-dark text-text-main font-sans selection:bg-accent-pink/30 selection:text-white antialiased overflow-x-hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight font-bold;
+    @apply font-headline tracking-tighter font-bold;
   }
 }
 
@@ -27,8 +32,16 @@
     @apply bg-bg-surface/40 backdrop-blur-xl border border-glass-stroke rounded-2xl transition-all duration-300;
   }
 
+  .glass-refraction {
+    @apply backdrop-blur-[24px] bg-[#1a1d23]/40 saturate-[180%];
+  }
+
+  .ghost-border {
+    @apply border border-primary/20;
+  }
+
   .btn-primary {
-    @apply px-8 py-3 bg-gradient-to-r from-accent-pink to-[#c18c8c] text-bg-dark font-bold rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(244,157,181,0.4)];
+    @apply px-8 py-3 bg-gradient-to-r from-accent-pink to-accent-gold text-bg-dark font-bold rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(244,157,181,0.4)];
   }
 
   .btn-secondary {
@@ -37,5 +50,9 @@
 
   .hero-glow {
     background: radial-gradient(circle at center, rgba(244, 157, 181, 0.15) 0%, rgba(5, 7, 10, 1) 70%);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 193, 208, 0.3);
   }
 }

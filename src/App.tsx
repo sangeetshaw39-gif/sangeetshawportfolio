@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { AnimatePresence } from 'motion/react';
 import ParticleBackground from './components/ParticleBackground';
 import Navbar from './components/Navbar';
@@ -9,9 +9,14 @@ import About from './sections/About';
 import Blog from './sections/Blog';
 import Contact from './sections/Contact';
 import SpendGuardCaseStudy from './pages/SpendGuardCaseStudy';
+import FifoCaseStudy from './pages/FifoCaseStudy';
+import BillCaseStudy from './pages/BillCaseStudy';
+import RfmCaseStudy from './pages/RfmCaseStudy';
+import { cn } from './lib/utils';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
+  const [interactionState, setInteractionState] = useState<'idle' | 'active' | 'success'>('idle');
 
   // Scroll to top when tab changes
   useEffect(() => {
@@ -23,15 +28,21 @@ export default function App() {
       case 'home':
         return <Home onViewProjects={() => setActiveTab('projects')} onContact={() => setActiveTab('contact')} onAbout={() => setActiveTab('about')} />;
       case 'projects':
-        return <Projects onViewCaseStudy={() => setActiveTab('case-study-spendguardai')} />;
+        return <Projects onViewCaseStudy={(route) => setActiveTab(route)} onContact={() => setActiveTab('contact')} />;
       case 'about':
         return <About />;
       case 'blog':
         return <Blog />;
       case 'contact':
-        return <Contact />;
+        return <Contact setInteractionState={setInteractionState} />;
       case 'case-study-spendguardai':
         return <SpendGuardCaseStudy onBack={() => setActiveTab('projects')} />;
+      case 'case-study-fifo':
+        return <FifoCaseStudy onBack={() => setActiveTab('projects')} />;
+      case 'case-study-bill':
+        return <BillCaseStudy onBack={() => setActiveTab('projects')} />;
+      case 'case-study-rfm':
+        return <RfmCaseStudy onBack={() => setActiveTab('projects')} />;
       default:
         return <Home onViewProjects={() => setActiveTab('projects')} onContact={() => setActiveTab('contact')} onAbout={() => setActiveTab('about')} />;
     }
@@ -40,11 +51,12 @@ export default function App() {
   const isCaseStudy = activeTab.startsWith('case-study');
 
   return (
-    <div className="min-h-screen bg-bg-dark text-text-main selection:bg-accent-pink/30 selection:text-white relative overflow-hidden">
-      {/* GLOBAL HERO GLOW */}
-      <div className="fixed inset-0 hero-glow -z-10 pointer-events-none opacity-50" />
+    <div className="min-h-screen bg-bg-dark text-text-main selection:bg-primary/30 selection:text-white relative overflow-hidden transition-colors duration-1000">
       
-      <ParticleBackground />
+      {/* Background Layer */}
+      <Suspense fallback={<div className="fixed inset-0 bg-bg-dark" />}>
+        <ParticleBackground activeTab={activeTab} interactionState={interactionState} />
+      </Suspense>
       
       <Navbar 
         activeTab={isCaseStudy ? '' : activeTab} 
@@ -52,7 +64,11 @@ export default function App() {
         isInternalPage={isCaseStudy} 
       />
 
-      <main className="relative pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto overflow-x-hidden">
+      <main className={cn(
+        "relative transition-all duration-1000",
+        "pt-32 md:pt-40",
+        "pb-24 px-6 md:px-12 max-w-7xl mx-auto overflow-visible"
+      )}>
         <AnimatePresence mode="wait">
           <GlassPanel key={activeTab}>
             {renderSection()}
@@ -60,10 +76,6 @@ export default function App() {
         </AnimatePresence>
       </main>
 
-      <footer className="fixed bottom-6 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.3em] font-medium text-text-muted/40 pointer-events-none whitespace-nowrap z-50">
-        Sangeet Shaw • AI & Business Analytics Consultant • 2026
-      </footer>
     </div>
   );
 }
-
