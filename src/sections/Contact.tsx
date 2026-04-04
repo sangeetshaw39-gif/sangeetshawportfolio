@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Mail, Linkedin, Instagram, MessageCircle, ArrowUpRight, Send, Briefcase, ShieldCheck, Bot } from 'lucide-react';
 
@@ -44,6 +45,28 @@ interface ContactProps {
 }
 
 export default function Contact({ setInteractionState }: ContactProps) {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const { name, email, message } = formData;
+    if (!name || !email || !message) return;
+
+    const subject = encodeURIComponent(`Project Inquiry from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    window.location.href = `mailto:sangeetshaw39@gmail.com?subject=${subject}&body=${body}`;
+    setInteractionState('success');
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
   return (
     <div className="space-y-24 py-12">
       
@@ -141,11 +164,15 @@ export default function Contact({ setInteractionState }: ContactProps) {
         {/* Right: Contact Form */}
         <div className="lg:col-span-8">
           <div className="bg-bg-surface/20 glass-refraction p-8 md:p-16 rounded-sm ghost-border">
-            <form className="space-y-12">
+            <form onSubmit={handleSubmit} className="space-y-12">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="relative group">
                   <label className="font-headline text-[9px] uppercase tracking-[0.3em] text-text-muted/60 group-focus-within:text-primary transition-colors mb-2 block">Full Name</label>
                   <input 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     className="w-full bg-transparent border-b border-primary/20 focus:border-primary py-3 text-lg font-headline font-bold text-text-main outline-none transition-all placeholder:text-text-muted/20"
                     placeholder="SANGEET SHAW"
                   />
@@ -153,6 +180,11 @@ export default function Contact({ setInteractionState }: ContactProps) {
                 <div className="relative group">
                   <label className="font-headline text-[9px] uppercase tracking-[0.3em] text-text-muted/60 group-focus-within:text-secondary transition-colors mb-2 block">Email Address</label>
                   <input 
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     className="w-full bg-transparent border-b border-primary/20 focus:border-secondary py-3 text-lg font-headline font-bold text-text-main outline-none transition-all placeholder:text-text-muted/20"
                     placeholder="SANGEET@SHAW.IO"
                   />
@@ -165,6 +197,10 @@ export default function Contact({ setInteractionState }: ContactProps) {
                   <span className="text-[10px] text-text-muted italic">Tell me what you're trying to solve — I'll respond with a structured approach.</span>
                 </div>
                 <textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   className="w-full bg-transparent border-b border-primary/20 focus:border-primary py-3 text-lg font-headline font-bold text-text-main outline-none transition-all resize-none placeholder:text-text-muted/20"
                   rows={4}
                   placeholder="Briefly describe your problem or requirement..."

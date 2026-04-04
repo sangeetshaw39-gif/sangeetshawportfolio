@@ -104,16 +104,16 @@ export default function Home({ onViewProjects, onContact, onAbout }: HomeProps) 
             <div className="absolute inset-0 border-[0.5pt] border-secondary/20 -rotate-3 group-hover:-rotate-6 transition-transform duration-700"></div>
             
             {/* The Main Glow Effect Behind Image */}
-            <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-110 opacity-70 group-hover:opacity-100 transition-opacity duration-1000 -z-10"></div>
+            <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-110 opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-1000 -z-10"></div>
             
             <div className="w-full h-full glass-card overflow-hidden ghost-border relative z-10 transition-all duration-700 group-hover:shadow-[0_0_80px_rgba(244,157,181,0.25)]">
               <img 
                 src="/assets/sangeet.png" 
                 alt="Portrait of Sangeet Shaw" 
-                className="w-full h-full object-cover grayscale brightness-90 contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+                className="w-full h-full object-cover md:grayscale md:brightness-90 md:contrast-125 md:group-hover:grayscale-0 md:group-hover:scale-110 transition-all duration-1000"
               />
               
-              <div className="absolute bottom-4 left-4 right-4 bg-bg-dark/60 backdrop-blur-xl px-4 py-3 ghost-border opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+              <div className="absolute bottom-4 left-4 right-4 bg-bg-dark/80 md:bg-bg-dark/60 backdrop-blur-xl px-4 py-3 ghost-border opacity-100 translate-y-0 md:opacity-0 md:translate-y-full md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500">
                 <div className="space-y-1">
                   <span className="font-headline text-[9px] uppercase tracking-widest text-primary font-black">Working Style</span>
                   <p className="text-[10px] text-text-main font-bold leading-tight">Independent • System-focused • Problem-driven</p>

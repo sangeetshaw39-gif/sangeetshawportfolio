@@ -57,16 +57,16 @@ function ProjectCard({ project, onViewCaseStudy }: { project: any, onViewCaseStu
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="group relative glass-card p-6 ghost-border flex flex-col hover:-translate-y-2 transition-all duration-500"
+      className="group relative glass-card p-6 ghost-border flex flex-col hover:-translate-y-2 md:hover:-translate-y-2 transition-all duration-500"
     >
       {/* Project Image Section */}
       <div className="overflow-hidden mb-6 aspect-video bg-bg-surface relative rounded-lg">
         <img 
           src={project.image} 
           alt={project.title} 
-          className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
+          className="w-full h-full object-cover md:grayscale transition-all duration-700 md:group-hover:grayscale-0 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute inset-0 bg-primary/10 opacity-30 md:opacity-0 md:group-hover:opacity-100 transition-opacity" />
         {project.isFeatured && (
           <div className="absolute top-4 right-4 px-3 py-1 bg-primary text-bg-dark font-black text-[10px] uppercase tracking-widest rounded-full z-20">
             Featured
@@ -127,7 +127,7 @@ function ProjectCard({ project, onViewCaseStudy }: { project: any, onViewCaseStu
                 !project.route && "bg-primary text-bg-dark border-none"
               )}
             >
-              {project.route ? "Visit Live Site" : "View System"}
+              {project.title === "SpendGuard AI" ? "Visit Live Site" : (project.route ? "View Project" : "View System")}
               <ExternalLink className="w-4 h-4" />
             </a>
           )}
@@ -140,7 +140,7 @@ function ProjectCard({ project, onViewCaseStudy }: { project: any, onViewCaseStu
 export default function Projects({ onViewCaseStudy, onContact }: { onViewCaseStudy: (route: string) => void, onContact: () => void }) {
   return (
     <div className="space-y-16 py-8">
-      <div className="flex flex-col md:flex-row justify-between items-end gap-8">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
         <div className="max-w-2xl">
           <motion.span
             initial={{ opacity: 0 }}
