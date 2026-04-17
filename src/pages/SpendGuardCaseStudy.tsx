@@ -16,7 +16,9 @@ import {
   ArrowRight,
   TrendingDown,
   AlertTriangle,
-  Lightbulb
+  Lightbulb,
+  Rocket,
+  Sparkles
 } from 'lucide-react';
 
 interface CaseStudyProps {
@@ -156,6 +158,38 @@ export default function SpendGuardCaseStudy({ onBack }: CaseStudyProps) {
             <p className="text-[10px] text-text-muted/60 font-medium italic pt-4">
               "This is achieved without enforcing rigid input formats, making the system adaptable to real-world business data conditions."
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* VIBE CODING CALLOUT */}
+      <section className="relative px-8 py-20 glass-card bg-primary/5 border-dashed border-primary/20 overflow-hidden group">
+        <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-opacity">
+          <Sparkles className="w-64 h-64 text-primary" />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto space-y-8">
+          <div className="flex items-center gap-4">
+            <Rocket className="text-secondary w-6 h-6 animate-bounce" />
+            <h3 className="font-headline text-2xl font-bold text-text-main uppercase tracking-tighter">
+              The "Vibe Coding" Philosophy
+            </h3>
+          </div>
+          <p className="text-lg md:text-xl text-text-muted leading-relaxed font-medium">
+            Beyond the technical stack, SpendGuardAI is a product of <span className="text-primary font-black uppercase tracking-widest">Vibe Coding</span>—the art of using AI orchestration to deliver production-ready systems at the speed of thought.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8 border-t border-primary/10">
+            <div className="space-y-4">
+              <h4 className="font-headline text-[10px] uppercase tracking-widest text-primary font-black">AI Orchestration</h4>
+              <p className="text-sm text-text-muted leading-relaxed">
+                Using <span className="text-text-main font-bold">Antigravity and Gemini</span>, I was able to bridge the massive gap between raw business ideas and a functional, scalable AI pipeline. As a non-coder, I focused on the logic and the "vibe" of the solution, while AI handled the syntax.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <h4 className="font-headline text-[10px] uppercase tracking-widest text-secondary font-black">Client-Centric Execution</h4>
+              <p className="text-sm text-text-muted leading-relaxed">
+                This methodology allowed me to prototype, iterate, and ship a complex financial tool that solved the client's problem exactly as envisioned, proving that <span className="text-text-main font-bold">intent and execution</span> are the new universal languages of development.
+              </p>
+            </div>
           </div>
         </div>
       </section>

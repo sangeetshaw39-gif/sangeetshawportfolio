@@ -5,61 +5,6 @@ import { cn } from '@/src/lib/utils';
 
 const posts = [
   {
-    title: "From Manual Chaos to Structured System: How Small Businesses Improve Operations Without Expensive Software",
-    excerpt: "Practical ways MSMEs can use automation and AI tools without technical knowledge.",
-    date: "November 2025",
-    readTime: "10 min read",
-    tag: "AI + MSME",
-    content: `
-Most small businesses don’t have a revenue problem. They have a system problem.
-
-Work gets done every day, but there is no structure behind it. Billing is handled manually, inventory is not updated consistently, and customer data is scattered. Everything depends on people remembering things instead of systems managing them. Because of this, even simple decisions take time, and mistakes become common.
-
-The issue is not effort. People are working hard. The issue is that the work is not organized.
-
-Before thinking about AI or advanced tools, a business needs to fix its foundation. That means creating a system where operations are clear, consistent, and easy to manage.
-
-The first step is bringing everything into one place. Billing, inventory, and customer data should not exist in different formats or locations. When everything is structured in a single system, clarity improves immediately. Instead of guessing, the business starts seeing actual numbers.
-
-Once the system is in place, the next step is reducing manual work.
-
-Basic automation can solve most of the inefficiencies:
-
-Bills can be generated automatically
-Inventory can update with each transaction
-Customer data can be linked with sales
-Simple summaries can be created without manual effort
-
-These are not complex changes, but they create real impact. Time reduces, errors reduce, and operations become smoother.
-
-Another major shift comes from visibility. Most businesses already have data, but they don’t use it properly. Once the system is structured, it becomes easy to answer important questions like what is selling the most, where cash is getting stuck, or which customers have pending payments. This level of clarity improves decision-making without needing anything advanced.
-
-This is where most people misunderstand the role of technology.
-
-Expensive software is not always the solution. If the system itself is weak, adding more tools will only increase confusion. What actually works is building a simple, structured system that people can use consistently.
-
-A practical way to approach this is:
-
-Step 1: Move all operations to a digital system
-Step 2: Organize data in a structured format
-Step 3: Automate repetitive tasks
-Step 4: Create simple dashboards or summaries
-Step 5: Then explore advanced tools or AI if needed
-
-Most businesses try to start with the last step, which is why they don’t see real improvement.
-
-The difference between businesses going forward will not be based on size. It will be based on how they operate. Those with structured systems and clear visibility will move faster and make better decisions. Those relying on manual processes will continue to struggle with inefficiencies.
-
-The core idea is simple.
-
-Clarity creates control.
-Control improves decisions.
-Better decisions improve performance.
-
-You don’t need expensive software to achieve this. You need a system that actually works.
-`
-  },
-  {
     title: "Building Business Systems Using Google Sheets: A Practical Approach to Automation and Control",
     excerpt: "Building of a complete billing, inventory, and dashboard system using Sheets and Apps Script.",
     date: "January 2026",
@@ -115,82 +60,6 @@ You need a system that is structured, consistent, and actually used.
 
 Tools like Google Sheets are not powerful because of features.
 They are powerful because of how you design the system around them.
-`
-  },
-  {
-    title: "How AI and Data Can Predict Financial Risk Before It Happens",
-    excerpt: "Using analytics and AI to identify early signals of credit risk and improve decision-making.",
-    date: "March 2026",
-    readTime: "10 min read",
-    tag: "Analytics",
-    content: `
-Financial risk doesn’t appear suddenly. It builds over time.
-
-Most businesses only react when the problem becomes visible — when payments are delayed, cash flow becomes tight, or defaults start happening. But long before that, the signals are already there.
-
-The problem is not lack of data. The problem is not noticing the pattern.
-
-Every business generates data through daily operations. Transactions, payment history, customer behavior, and usage patterns all leave signals. Individually, these signals may not seem important, but together they can indicate rising risk.
-
-This is where data analysis and AI become useful.
-
-The goal is not to predict the future perfectly. The goal is to identify early warning signs.
-
-For example:
-
-A customer who starts delaying payments more frequently
-Gradual increase in outstanding balances
-Irregular transaction patterns
-Sudden drop in activity
-
-These are small changes, but they show a shift in behavior. And risk usually follows behavior.
-
-From my experience working with financial datasets, one thing becomes clear — risky outcomes are rarely random. They are usually the result of patterns that were already forming.
-
-AI helps in identifying these patterns faster and at scale.
-
-Instead of manually checking data, AI models can:
-
-Track behavior across multiple variables
-Detect unusual changes
-Assign risk levels to customers or transactions
-Highlight cases that need attention
-
-This makes the process more proactive instead of reactive.
-
-But an important point is that AI only works well when the data is structured properly. If the data is inconsistent or incomplete, even the best models will not give useful results.
-
-So the foundation is always the same — clean and consistent data.
-
-A simple approach to using data and AI for risk prediction looks like this:
-
-Step 1: Collect and organize data consistently
-Step 2: Track key indicators like payment behavior and transaction trends
-Step 3: Identify patterns and changes over time
-Step 4: Use AI or basic analytics to flag risky behavior
-Step 5: Take action early instead of waiting for the problem
-
-Even without advanced models, basic analysis can provide strong insights. AI simply improves speed and scale.
-
-Another important factor is interpretation.
-
-AI can highlight patterns, but decisions still depend on understanding the context. A delay in payment might be normal for one customer but risky for another. This is where human judgment and business understanding become important.
-
-The real advantage of using AI and data is not prediction alone. It is early awareness.
-
-Businesses that track and analyze their data properly can act before problems grow. They can reduce losses, improve cash flow, and make better decisions.
-
-Those who don’t usually realize the problem only after it has already impacted the business.
-
-The difference is simple.
-
-Reactive approach: respond after the risk appears
-Proactive approach: identify signals before it becomes risk
-
-AI and data make the proactive approach possible.
-
-But the real value does not come from the tool.
-It comes from how the data is used.
 `
   },
   {
@@ -323,7 +192,33 @@ Most people build projects to show skills. I built this to solve a problem I saw
 
 And honestly… This is just the beginning.
 `
-  }
+  },
+  {
+    title: "LedgerPrime: From Keyboard‑Centric Vision to Desktop ERP Mastery",
+    excerpt: "How I turned a non‑coder vibe into a high‑performance accounting desktop app using Antigravity and Gemini AI.",
+    date: "April 2026",
+    readTime: "12 min read",
+    tag: "ERP Systems",
+    content: `
+The Journey Begins
+
+I started with a simple idea: build an accounting tool that feels as fast as a classic desktop keyboard‑driven system. No fancy UI, just pure speed and precision.
+
+Why Antigravity?
+
+As a non‑coder, I rely on AI to bridge the gap between vision and implementation. Antigravity helped me generate the core React‑Electron scaffolding, while Gemini AI refined the business logic, from GST calculations to multi‑company ledger handling.
+
+Key Challenges & Solutions
+
+- **Keyboard‑First UX**: I used Antigravity‑generated shortcuts to mimic Tally‑style keystrokes, cutting data entry time by 40%.
+- **Data Integrity**: Gemini AI assisted in designing the SQLite schema, ensuring ACID compliance without writing every migration manually.
+- **Performance**: Leveraging Antigravity’s performance profiling, I optimized rendering pipelines to stay under 50 ms latency.
+
+Result
+
+LedgerPrime now runs as a sleek Electron desktop app, delivering professional‑grade accounting with the speed of a keyboard‑centric workflow. The project showcases how AI‑driven development can empower non‑coders to deliver enterprise‑level solutions.
+`,
+  },
 ];
 
 export default function Blog() {

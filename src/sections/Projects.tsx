@@ -1,9 +1,21 @@
 import React, { useRef } from 'react';
 import { motion } from 'motion/react';
-import { ExternalLink, Target, Zap, LayoutGrid, Layers, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Target, Zap, LayoutGrid, Layers, ArrowUpRight, Wallet } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 const projects = [
+  {
+    title: "LedgerPrime",
+    tag: "DESKTOP ERP & ACCOUNTING",
+    isFeatured: true,
+    route: "case-study-ledgerprime",
+    link: "/assets/ledgerprime.pdf",
+    description: "A high-performance, keyboard-centric accounting ecosystem built for professional speed and financial precision.",
+    impact: "Reduced data entry friction by 40% through Tally-inspired shortcuts and automated GST calculation engines.",
+    tech: ["React 19", "Electron", "SQLite", "TypeScript", "Antigravity", "Gemini AI"],
+    image: "/assets/icon.png",
+    icon: <Wallet className="w-5 h-5" />
+  },
   {
     title: "SpendGuard AI",
     tag: "FINTECH SYSTEM",
@@ -12,7 +24,7 @@ const projects = [
     link: "https://spendguardai.vercel.app/",
     description: "A financial data processing system that transforms inconsistent expense data into structured insights using a hybrid pipeline of rule-based validation and AI-assisted analysis.",
     impact: "Standardizes messy financial data and highlights high-risk spending patterns for faster analysis",
-    tech: ["Gemini AI", "FastAPI", "Supabase", "Javascript UI"],
+    tech: ["Gemini AI", "FastAPI", "Supabase", "Antigravity"],
     image: "/assets/SPENDGUARDAI.png",
     icon: <Target className="w-5 h-5" />
   },
@@ -23,7 +35,7 @@ const projects = [
     link: "https://drive.google.com/drive/folders/13k2bVpFxBIr728i9hX_AqnsMJ-iWg4a_",
     description: "A structured inventory tracking system built using Google Sheets and Apps Script to manage stock movement based on FIFO logic, reducing manual tracking errors and improving visibility across inventory flows.",
     impact: "Brings consistency to inventory tracking by automating FIFO-based stock movement and reducing dependency on manual logs",
-    tech: ["APPS SCRIPT", "GOOGLE SHEETS", "INVENTORY LOGIC", "DASHBOARDING"],
+    tech: ["APPS SCRIPT", "GOOGLE SHEETS", "INVENTORY LOGIC", "ChatGPT"],
     image: "/assets/FIFO.png",
     icon: <Layers className="w-5 h-5" />
   },
@@ -34,7 +46,7 @@ const projects = [
     link: "https://drive.google.com/drive/folders/1ElkFZjWs34ARfNYrkRNAxK2hpKPXhI1e",
     description: "A workflow automation system built on Google Sheets and Apps Script to streamline GST invoicing by integrating customer records, product lookup, and automated bill generation.",
     impact: "Reduces manual billing effort by automating invoice creation and maintaining structured customer and transaction records",
-    tech: ["AUTOMATION", "GOOGLE SHEETS", "APPS SCRIPT", "MSME TOOLS"],
+    tech: ["AUTOMATION", "GOOGLE SHEETS", "APPS SCRIPT", "ChatGPT"],
     image: "/assets/BILL.png",
     icon: <Zap className="w-5 h-5" />
   },
@@ -45,7 +57,7 @@ const projects = [
     link: "/assets/rfm_revenue_intelligence_dashboard.pdf",
     description: "A customer-level revenue analysis model built using Python and Power BI to identify spending patterns, segment users, and highlight high-value customer groups using RFM-based logic.",
     impact: "Helps identify high-value customer segments and understand revenue concentration patterns for better targeting decisions",
-    tech: ["PYTHON", "POWER BI", "RFM ANALYSIS", "DATA VISUALIZATION"],
+    tech: ["PYTHON", "POWER BI", "RFM ANALYSIS", "ChatGPT"],
     image: "/assets/RFM.png",
     icon: <LayoutGrid className="w-5 h-5" />
   }

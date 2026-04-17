@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { cn } from '@/src/lib/utils';
-import { Menu, X, Rocket, Database, Briefcase, Mail, LayoutGrid } from 'lucide-react';
+import { Menu, X, Rocket, Database, Briefcase, Mail, LayoutGrid, Download } from 'lucide-react';
 import { useState } from 'react';
 
 interface NavbarProps {
@@ -51,6 +51,13 @@ export default function Navbar({ activeTab, setActiveTab, isInternalPage }: Navb
                 {tab.label}
               </button>
             ))}
+            <a 
+              href="/assets/sangeetshawresume.pdf" 
+              target="_blank"
+              className="text-xs uppercase tracking-widest font-bold text-text-muted hover:text-primary transition-all duration-300"
+            >
+              Resume
+            </a>
           </div>
 
           <div className="flex items-center gap-4">
@@ -93,6 +100,14 @@ export default function Navbar({ activeTab, setActiveTab, isInternalPage }: Navb
               {tab.label}
             </button>
           ))}
+          <a 
+            href="/assets/sangeetshawresume.pdf" 
+            target="_blank"
+            className="flex items-center gap-4 text-xl font-headline font-bold tracking-tighter text-text-muted hover:text-primary transition-colors"
+          >
+            <Download className="w-5 h-5" />
+            Resume
+          </a>
           <button 
             onClick={() => handleTabClick('contact')}
             className="mt-auto px-8 py-4 bg-primary text-on-primary font-bold tracking-widest uppercase text-xs rounded-sm hover:brightness-110 active:scale-95 transition-all"

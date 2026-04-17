@@ -12,6 +12,7 @@ import SpendGuardCaseStudy from './pages/SpendGuardCaseStudy';
 import FifoCaseStudy from './pages/FifoCaseStudy';
 import BillCaseStudy from './pages/BillCaseStudy';
 import RfmCaseStudy from './pages/RfmCaseStudy';
+import LedgerPrimeCaseStudy from './pages/LedgerPrimeCaseStudy';
 import { cn } from './lib/utils';
 
 export default function App() {
@@ -43,6 +44,8 @@ export default function App() {
         return <BillCaseStudy onBack={() => setActiveTab('projects')} />;
       case 'case-study-rfm':
         return <RfmCaseStudy onBack={() => setActiveTab('projects')} />;
+      case 'case-study-ledgerprime':
+        return <LedgerPrimeCaseStudy onBack={() => setActiveTab('projects')} />;
       default:
         return <Home onViewProjects={() => setActiveTab('projects')} onContact={() => setActiveTab('contact')} onAbout={() => setActiveTab('about')} />;
     }

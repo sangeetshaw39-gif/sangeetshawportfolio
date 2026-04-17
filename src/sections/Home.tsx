@@ -55,6 +55,14 @@ export default function Home({ onViewProjects, onContact, onAbout }: HomeProps) 
               >
                 How I Build
               </button>
+              <a 
+                href="/assets/sangeetshawresume.pdf" 
+                target="_blank"
+                className="flex items-center gap-2 text-text-muted hover:text-primary transition-colors font-bold text-xs tracking-widest uppercase border-b border-primary/10 pb-1"
+              >
+                <Download className="w-4 h-4" />
+                Resume
+              </a>
             </div>
           </motion.div>
 
