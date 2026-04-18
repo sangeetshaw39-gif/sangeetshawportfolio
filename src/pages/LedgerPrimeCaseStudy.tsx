@@ -17,7 +17,9 @@ import {
   Wallet,
   Keyboard,
   Container,
-  Database
+  Database,
+  Sparkles,
+  Rocket
 } from 'lucide-react';
 
 interface CaseStudyProps {

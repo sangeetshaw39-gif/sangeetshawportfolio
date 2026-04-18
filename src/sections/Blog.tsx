@@ -195,28 +195,197 @@ And honestly… This is just the beginning.
   },
   {
     title: "LedgerPrime: From Keyboard‑Centric Vision to Desktop ERP Mastery",
-    excerpt: "How I turned a non‑coder vibe into a high‑performance accounting desktop app using Antigravity and Gemini AI.",
+    excerpt: "The real story behind building a professional-grade desktop accounting system — as a non-coder — using AI, obsession, and a clear vision of what speed should feel like.",
     date: "April 2026",
-    readTime: "12 min read",
+    readTime: "10 min read",
     tag: "ERP Systems",
     content: `
-The Journey Begins
+The Idea That Wouldn't Leave Me Alone
 
-I started with a simple idea: build an accounting tool that feels as fast as a classic desktop keyboard‑driven system. No fancy UI, just pure speed and precision.
+I've worked closely with small businesses and accounting teams for a while now.
 
-Why Antigravity?
+And every single time, the same frustration showed up…
 
-As a non‑coder, I rely on AI to bridge the gap between vision and implementation. Antigravity helped me generate the core React‑Electron scaffolding, while Gemini AI refined the business logic, from GST calculations to multi‑company ledger handling.
+They knew what they needed to do — record a sale, track a payment, generate a GST invoice. But the tools around them either slowed them down, confused them, or cost too much to matter.
 
-Key Challenges & Solutions
+Then I experienced Tally.
 
-- **Keyboard‑First UX**: I used Antigravity‑generated shortcuts to mimic Tally‑style keystrokes, cutting data entry time by 40%.
-- **Data Integrity**: Gemini AI assisted in designing the SQLite schema, ensuring ACID compliance without writing every migration manually.
-- **Performance**: Leveraging Antigravity’s performance profiling, I optimized rendering pipelines to stay under 50 ms latency.
+Not as a developer. As someone who watched accountants use it. And I noticed something fascinating — those accountants barely looked at their mouse. They moved through screens using keyboard shortcuts at a speed that looked almost like coding. Everything was fast. Every flow was intentional.
 
-Result
+That's when I asked myself: What if I could build something like this, but modern?
 
-LedgerPrime now runs as a sleek Electron desktop app, delivering professional‑grade accounting with the speed of a keyboard‑centric workflow. The project showcases how AI‑driven development can empower non‑coders to deliver enterprise‑level solutions.
+Not a SaaS. Not a cloud dashboard. A real desktop application where speed is the feature.
+
+That idea became LedgerPrime.
+
+---
+
+The Challenge Nobody Warned Me About
+
+Here's the honest truth — I am not a coder.
+
+I don't write React from scratch. I don't configure Electron from memory. I don't know the syntax for a GST calculation off the top of my head.
+
+What I do know is systems.
+
+I know how accounting flows should work. I know what a sales entry screen needs to feel like. I know that when an accountant presses Enter after entering a party name, they expect the cursor to jump to the next meaningful field — not anywhere random.
+
+The challenge was: how do you turn that kind of domain clarity into a working, professional-grade desktop application without being a full-stack developer?
+
+The answer was AI.
+
+Specifically — Antigravity and Gemini AI.
+
+---
+
+How I Actually Built This (The Real Process)
+
+Most people imagine building an app as: write code → test → ship.
+
+My process looked nothing like that.
+
+It looked more like this:
+
+Think clearly about what the workflow needs to feel like → explain it in precise, human language → use Antigravity to generate the implementation → review the output with Gemini AI → refine, test, iterate.
+
+That's vibe coding. And it's not lazy — it is a completely different kind of skill.
+
+Step 1 — I defined the entire flow on paper first.
+
+Before a single line of code existed, I mapped out every screen.
+
+Sales Entry. Purchase Entry. Journal. Receipt. Payment. Contra. Stock Items. Ledger Master. Company Management. Registers. Party Reports. Trial Balance.
+
+Each module had a purpose. Each input field had a reason to exist. Each keyboard shortcut had a clear intent.
+
+This is domain knowledge. And no AI can replace it. You need to know the business deeply before you can build for it.
+
+Step 2 — I described the UI in human terms, and Antigravity built it.
+
+When I needed the Sales Entry screen, I didn't open a code editor and start typing components. I described what I needed — keyboard-first navigation, a tabular entry grid, party autocomplete, item lookup by brand and part name, GST auto-calculation — and Antigravity scaffolded it.
+
+My job was to review it. Challenge it. Push it to match my mental model.
+
+Step 3 — Gemini AI handled the logic layer.
+
+GST calculation logic is not simple.
+
+CGST, SGST, IGST. Different rates for different items. Tax-exclusive pricing. Rounding rules. Amount-in-words. Multi-item bill totals.
+
+I used Gemini to validate every formula, every edge case, every calculation scenario. Not to write the code blindly, but to understand what the logic should do — and then confirm the implementation matched it.
+
+---
+
+The Features That Made It Real
+
+LedgerPrime isn't a demo. It's a system someone can actually use.
+
+Here's what we built:
+
+Full Voucher System: Sales, Purchase, Receipt, Payment, Journal, Contra — all with proper accounting treatment. Every voucher posts to the correct ledger, updates running balances, and maintains audit integrity.
+
+Keyboard-Centric Navigation: Every field in every form is reachable by keyboard. Tab moves forward. Escape exits. Enter confirms. Alt+C opens a quick-create dialog for new ledgers or stock items without losing your place. This is the part that makes it feel like Tally.
+
+Inventory Intelligence: Items are organized by brand and part number. When you pick a brand, the system filters part names. When you confirm a part name, the part number fills automatically. No manual entry of codes. No lookup tables open separately.
+
+GST Engine: Automatically calculates CGST, SGST, and IGST based on item categories. Handles split tax scenarios. Displays live totals as items are added to the grid. Prints a fully compliant Tax Invoice.
+
+Multi-Company Support: Each company stores its own data separately. Company profile is editable. Password protection is available. You can switch between companies cleanly.
+
+Registers and Reports: Sales Register, Purchase Register, Party Ledger, Trial Balance — all generated dynamically from stored voucher data. Sorted chronologically. Displayed with running balances. Printable.
+
+---
+
+The Problems That Almost Broke Everything
+
+I want to be honest about the parts that didn't work on the first try — because that's where the real learning lives.
+
+Focus Jumping the Wrong Way
+
+Early versions of the entry grid had a critical bug — after a user picked a party name and pressed Enter, the cursor would skip Brand and land directly on Part Name. This confused users completely.
+
+The fix wasn't obvious. The autocomplete confirmation was triggering a focus event that the grid didn't expect. It took careful analysis of the event sequence to solve it — and Antigravity helped me trace and patch exactly where the flow broke.
+
+Data Disappearing on Confirmation
+
+When a user confirmed the part name, the Part No. field would clear. This happened because the onChange handler assumed any change was a new selection, even when the user was just confirming what was already there.
+
+The solution was to detect whether the value had actually changed before resetting dependent fields. A small logic change. A massive difference in user experience.
+
+Invoice Print Inconsistency
+
+The print template worked perfectly from the Sales Entry screen. But when printing from the Registers view, the format was different — item details were missing, spacing was off, totals didn't match.
+
+The fix required making sure both print paths used the exact same template logic. Not two versions. One source of truth.
+
+Each of these problems was messy. Each one required me to explain the failure clearly, work through it systematically, and iterate until it was right.
+
+That's the real skill in vibe coding — knowing what's wrong well enough to fix it with AI, even when you can't write the code yourself.
+
+---
+
+What This Project Taught Me
+
+This is not just a portfolio piece.
+
+LedgerPrime is proof that the gap between business understanding and software implementation is something AI can help close — if you know what you're doing on the business side.
+
+Here's what I actually learned:
+
+Domain knowledge is irreplaceable. No AI knows your client's pain points better than you do. The value I added was understanding the accounting workflows deeply enough to describe them precisely.
+
+Clarity is code. When I gave vague instructions, I got vague outputs. When I described exactly what I needed — field order, validation logic, keyboard behavior — the outputs were sharp.
+
+Iteration is the real work. The first version is never right. The tenth version starts getting close. Building with AI is still building — it just moves faster.
+
+Users live in the details. The difference between an app people tolerate and an app people love is in the micro-interactions. How the cursor moves. How quickly the system responds. How well the invoice looks when printed. These details matter.
+
+---
+
+Why This Matters Beyond the Project
+
+Most people look at me and assume I must be a developer.
+
+I'm not.
+
+I'm someone who understands systems, sees problems clearly, and uses every tool available to solve them — including AI.
+
+LedgerPrime is the most technical project I've delivered. And I delivered it without writing a single line of code by hand.
+
+That's not something to apologize for. That's the future of building.
+
+The accountants who use Tally didn't build Tally. They understood the work deeply enough to demand the right tool.
+
+I understood the work deeply enough to build it myself.
+
+---
+
+What's Next for LedgerPrime
+
+The core system is functional and deployed. But there's more on the roadmap:
+
+Advanced financial reports (P&L, Balance Sheet)
+Smart alerts for overdue payments and unusual transactions
+Offline-first architecture for businesses with low connectivity
+A cleaner onboarding experience for new company setup
+
+The foundation is solid. Everything else is scale.
+
+---
+
+Final Thought
+
+If you're a business person with a clear vision of what a tool should do — don't let "I'm not a developer" stop you.
+
+That's not the barrier anymore.
+
+The barrier is clarity. And that's something you build through understanding, not through code.
+
+LedgerPrime started as a keyboard-centric idea.
+
+It shipped as a production-grade accounting system.
+
+And it was built — entirely — through vision, precision, and AI.
 `,
   },
 ];
