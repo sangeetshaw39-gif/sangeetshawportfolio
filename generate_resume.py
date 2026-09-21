@@ -102,8 +102,8 @@ def create_resume(output_path):
         [
             Paragraph("<b>SANGEET SHAW</b>", name_style),
             Paragraph("Howrah, India &nbsp;|&nbsp; +91 62894 77287 &nbsp;|&nbsp; sangeetshaw39@gmail.com<br/>"
-                      "<b>Portfolio:</b> sangeetshaw.vercel.app &nbsp;|&nbsp; <b>LinkedIn:</b> in/sangeet-shaw-753148348<br/>"
-                      "<b>Instagram:</b> @sangeetshaw_i &nbsp;|&nbsp; <b>CashALL:</b> cashall.in (@cashall_official)", contact_style)
+                      "<b>LinkedIn:</b> in/sangeet-shaw-753148348 &nbsp;|&nbsp; <b>Instagram:</b> @sangeetshaw_i<br/>"
+                      "<b>CashALL:</b> cashall.in (@cashall_official)", contact_style)
         ]
     ]
     header_table = Table(header_table_data, colWidths=[180, 368])
