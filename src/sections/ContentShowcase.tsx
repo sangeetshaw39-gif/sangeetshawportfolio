@@ -34,45 +34,109 @@ interface ContentItem {
 }
 
 const contentItems: ContentItem[] = [
-  // --- CASHALL OFFICIAL BRAND CONTENT ---
+  // --- CASHALL OFFICIAL BRAND CONTENT (ORDERED BY HIGHEST VIEWS) ---
   {
     id: 'c1',
     title: 'CashALL Valuation & Doorstep Buyback Reel',
     type: 'cashall',
     category: 'reels',
-    categoryLabel: 'Brand Reel',
+    categoryLabel: 'Brand Reel (Top Viral)',
     format: '9:16 Video Reel',
-    link: 'https://www.instagram.com/reel/Dcz-DCvRyn2/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==',
-    hook: '"Instant phone valuation with zero guesswork at your doorstep."',
-    description: 'Dynamic pacing video demonstrating CashALL’s fast valuation workflow, highlighting real cash payments, trusted device pickup, and customer ease.',
-    strategy: 'Pain-point acquisition angle targeting device owners looking for transparent, immediate buyback without retail store deductions.',
+    link: 'https://www.instagram.com/reel/Dcz-DCvRyn2/',
+    hook: '"Purana phone bechne ke liye shop ke chakkar kyun lagana?"',
+    description: 'CashALL’s #1 viral reel demonstrating instant doorstep valuation, device inspection, and direct UPI payout without offline store hassle.',
+    strategy: 'High-intent pain point acquisition eliminating customer friction of traveling to retail shops with promises of instant digital payment.',
     platform: 'Instagram Reels (@cashall_official)',
     channel: '@cashall_official',
-    metrics: { tag: 'Official Brand Reel' },
+    metrics: { views: '72.3K+ Views', likes: '52 Likes' },
     visualBg: 'from-amber-950/40 via-bg-surface to-rose-950/30'
   },
   {
     id: 'c2',
-    title: 'CashALL Recommerce Customer Campaign',
+    title: 'Ganesh Chaturthi Festive Smart Upgrade Campaign',
     type: 'cashall',
-    category: 'ads',
-    categoryLabel: 'Performance Ad Post',
-    format: 'Promotional Post',
-    link: 'https://www.instagram.com/p/DdQgp8gkeAU/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==',
-    hook: '"Sell your old devices for the best value with CashALL."',
-    description: 'High-contrast promotional visual engineered for feed discovery, emphasizing instant payout, multi-category support (phones, laptops, tablets), and doorstep service.',
-    strategy: 'Direct-response conversion creative engineered to drive high-intent traffic to cashall.in.',
-    platform: 'Instagram Feed (@cashall_official)',
+    category: 'reels',
+    categoryLabel: 'Brand Campaign Reel',
+    format: '9:16 Video Reel',
+    link: 'https://www.instagram.com/reel/DdQdrnqx0RR/',
+    hook: '"🙏✨ Bappa aaye hain, aur saath laaye hain smart upgrade ka message! 📱"',
+    description: 'Festive seasonal campaign urging consumers to liquidate idle smartphones at home to fund their new festive upgrades.',
+    strategy: 'Cultural resonance paired with an urgent monetization hook to capture festive season upgrade intent.',
+    platform: 'Instagram Reels (@cashall_official)',
     channel: '@cashall_official',
-    metrics: { tag: 'Ad Creative' },
-    visualBg: 'from-pink-950/40 via-bg-surface to-purple-950/30'
+    metrics: { views: '32.8K+ Views', likes: '10 Likes' },
+    visualBg: 'from-yellow-950/40 via-bg-surface to-amber-900/30'
   },
   {
     id: 'c3',
-    title: 'Fast Doorstep Inspection & Instant Pay Reel',
+    title: 'Device Resale & Value Depreciation Awareness',
     type: 'cashall',
     category: 'reels',
-    categoryLabel: 'Brand Reel',
+    categoryLabel: 'Educational Brand Reel',
+    format: '9:16 Video Reel',
+    link: 'https://www.instagram.com/reel/DceJQr1p1YF/',
+    hook: '"Your phone is still working. But is its value still working for you? 📱"',
+    description: 'Educational thought-leadership reel showing how rapidly unused electronics lose market resale value sitting in desk drawers.',
+    strategy: 'Loss-aversion psychology targeting gadget hoarders to prompt immediate valuation checks.',
+    platform: 'Instagram Reels (@cashall_official)',
+    channel: '@cashall_official',
+    metrics: { views: '26.0K+ Views', likes: '22 Likes' },
+    visualBg: 'from-rose-950/40 via-bg-surface to-purple-950/30'
+  },
+  {
+    id: 'c4',
+    title: 'Hassle-Free 3-Step Doorstep Selling Workflow',
+    type: 'cashall',
+    category: 'reels',
+    categoryLabel: 'Workflow Conversion Reel',
+    format: '9:16 Video Reel',
+    link: 'https://www.instagram.com/reel/DctwqFVvMMc/',
+    hook: '"Ab purana phone sell karne ke liye shop ke chakkar lagane ki zarurat nahi."',
+    description: 'Smooth 3-step walkthrough showing request creation, slot selection, field agent inspection, and instant UPI bank transfer.',
+    strategy: 'Workflow simplification converting hesitant users into active pickup bookings.',
+    platform: 'Instagram Reels (@cashall_official)',
+    channel: '@cashall_official',
+    metrics: { views: '15.6K+ Views', likes: '21 Likes' },
+    visualBg: 'from-blue-950/40 via-bg-surface to-cyan-950/30'
+  },
+  {
+    id: 'c5',
+    title: 'Relatable Phone Upgrade Comedy Skit',
+    type: 'cashall',
+    category: 'reels',
+    categoryLabel: 'Brand Humor Reel',
+    format: '9:16 Video Reel',
+    link: 'https://www.instagram.com/reel/Dcge804piFo/',
+    hook: '"Your phone has one excuse: \'Main abhi bhi chal raha hoon.\' 😂📱"',
+    description: 'Humorous relatable content dissecting the common excuses users make before finally trading in their aging devices.',
+    strategy: 'Observational humor engineered for high organic shares, comments, and algorithm discovery.',
+    platform: 'Instagram Reels (@cashall_official)',
+    channel: '@cashall_official',
+    metrics: { views: '10.2K+ Views', likes: '19 Likes' },
+    visualBg: 'from-pink-950/40 via-bg-surface to-indigo-950/30'
+  },
+  {
+    id: 'c6',
+    title: 'Raksha Bandhan Story & Festive Gifting Campaign',
+    type: 'cashall',
+    category: 'reels',
+    categoryLabel: 'Festive Story Reel',
+    format: '9:16 Video Reel',
+    link: 'https://www.instagram.com/reel/DcjbgdDPNAV/',
+    hook: '"Rakhi ka gift lena tha… salary abhi aayi nahi thi. 😅📱"',
+    description: 'Narrative reel demonstrating how selling unused household phones provided immediate budget for Rakhi gifts.',
+    strategy: 'Relatable situational dilemma driving instant utility and emotional resonance.',
+    platform: 'Instagram Reels (@cashall_official)',
+    channel: '@cashall_official',
+    metrics: { views: '7.6K+ Views', likes: '22 Likes' },
+    visualBg: 'from-orange-950/40 via-bg-surface to-rose-950/30'
+  },
+  {
+    id: 'c7',
+    title: 'Doorstep Inspection & Dynamic Verification Reel',
+    type: 'cashall',
+    category: 'reels',
+    categoryLabel: 'Field Inspection Reel',
     format: '9:16 Video Reel',
     link: 'https://www.instagram.com/reel/DdWhihhJ30y/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==',
     hook: '"Watch how our technicians verify condition and transfer payment in 5 minutes."',
@@ -80,15 +144,31 @@ const contentItems: ContentItem[] = [
     strategy: 'Trust-building creative that resolves customer hesitation regarding on-site technician inspections.',
     platform: 'Instagram Reels (@cashall_official)',
     channel: '@cashall_official',
-    metrics: { tag: 'High-Intent Reel' },
-    visualBg: 'from-rose-950/40 via-bg-surface to-amber-950/30'
+    metrics: { views: '4.6K+ Views', likes: '37 Likes' },
+    visualBg: 'from-emerald-950/40 via-bg-surface to-slate-900'
   },
   {
-    id: 'c4',
+    id: 'c8',
+    title: 'CashALL Recommerce Customer Acquisition Campaign',
+    type: 'cashall',
+    category: 'ads',
+    categoryLabel: 'Performance Ad Creative',
+    format: 'Promotional Post',
+    link: 'https://www.instagram.com/p/DdQgp8gkeAU/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==',
+    hook: '"Sell your old devices for the best value with CashALL."',
+    description: 'High-contrast promotional visual engineered for feed discovery, emphasizing instant payout, multi-category support (phones, laptops, tablets), and doorstep service.',
+    strategy: 'Direct-response conversion creative engineered to drive high-intent traffic to cashall.in.',
+    platform: 'Instagram Feed (@cashall_official)',
+    channel: '@cashall_official',
+    metrics: { tag: 'Direct Ad Creative' },
+    visualBg: 'from-purple-950/40 via-bg-surface to-pink-950/30'
+  },
+  {
+    id: 'c9',
     title: 'CashALL Device Buyback Guarantee Post',
     type: 'cashall',
     category: 'carousels',
-    categoryLabel: 'Brand Visual',
+    categoryLabel: 'Brand Positioning',
     format: 'Square Post / Deck',
     link: 'https://www.instagram.com/p/DdMAiGYCZgu/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==',
     hook: '"Why take less at offline shops? Get deterministic pricing online."',
@@ -96,7 +176,7 @@ const contentItems: ContentItem[] = [
     strategy: 'Brand positioning creative highlighting fair market value and customer convenience.',
     platform: 'Instagram (@cashall_official)',
     channel: '@cashall_official',
-    metrics: { tag: 'Brand Positioning' },
+    metrics: { tag: 'Value Guarantee' },
     visualBg: 'from-orange-950/40 via-bg-surface to-slate-900'
   },
 
@@ -207,7 +287,7 @@ export default function ContentShowcase() {
         <div className="flex flex-wrap gap-2 p-1.5 glass-card ghost-border">
           {[
             { id: 'all', label: 'All Content' },
-            { id: 'cashall', label: 'CashALL Brand' },
+            { id: 'cashall', label: 'CashALL Top Reels' },
             { id: 'personal', label: 'Personal Top Reels' },
             { id: 'reels', label: 'Video Reels Only' }
           ].map((btn) => (
@@ -237,11 +317,16 @@ export default function ContentShowcase() {
               <Instagram className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-[9px] font-headline uppercase tracking-widest text-secondary font-black block">
-                Company Brand Management
-              </span>
+              <div className="flex items-center gap-2 mb-0.5">
+                <span className="text-[9px] font-headline uppercase tracking-widest text-secondary font-black block">
+                  Company Brand Management
+                </span>
+                <span className="px-2 py-0.5 bg-primary/20 text-primary text-[9px] font-black uppercase rounded-full">
+                  165K+ Top Views
+                </span>
+              </div>
               <h4 className="font-headline text-lg font-bold text-text-main">@cashall_official</h4>
-              <p className="text-xs text-text-muted">Reels, campaign visuals & audience acquisition</p>
+              <p className="text-xs text-text-muted">Top-performing short-form video reels, ad creatives & doorstep recommerce acquisition</p>
             </div>
           </div>
           <a
@@ -262,9 +347,14 @@ export default function ContentShowcase() {
               <Instagram className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-[9px] font-headline uppercase tracking-widest text-primary font-black block">
-                Personal Creator Channel
-              </span>
+              <div className="flex items-center gap-2 mb-0.5">
+                <span className="text-[9px] font-headline uppercase tracking-widest text-primary font-black block">
+                  Personal Creator Channel
+                </span>
+                <span className="px-2 py-0.5 bg-secondary/20 text-secondary text-[9px] font-black uppercase rounded-full">
+                  5.8K+ Top Views
+                </span>
+              </div>
               <h4 className="font-headline text-lg font-bold text-text-main">@sangeetshaw_i</h4>
               <p className="text-xs text-text-muted">Lifestyle, short-form pacing & creative editing</p>
             </div>
