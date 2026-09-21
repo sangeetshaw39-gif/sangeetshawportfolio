@@ -81,11 +81,11 @@ Here is how the workflow actually functioned:
 
 Key Takeaways for Modern Builders
 
-1. Technology must serve the workflow: Building software without deeply understanding doorstep pickup friction produces features nobody uses.
+1. Technology must serve the workflow: Building digital platforms without deeply understanding doorstep pickup friction produces features nobody uses.
 2. AI is a velocity multiplier, not a replacement for domain knowledge: The AI cannot design your pricing floor rules or understand why an Android app is better than a mobile web browser for a technician on a motorbike.
-3. The future belongs to hybrid builders: Someone who understands digital marketing, customer acquisition funnels, and full-stack software development can build complete, revenue-generating systems independently.
+3. The future belongs to hybrid builders: Someone who understands digital marketing, customer acquisition funnels, and AI-assisted product building can build complete, revenue-generating systems independently for clients.
 
-CashALL is live today at cashall.in — demonstrating what is possible when marketing strategy and operational software engineering come together.
+CashALL is live today at cashall.in — demonstrating what is possible when marketing strategy and AI-assisted product building come together.
 `
   },
   {
@@ -232,10 +232,10 @@ export default function Blog() {
           </motion.span>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-headline font-bold tracking-tighter text-text-main leading-tight uppercase">
             Marketing Strategy. <br />
-            <span className="text-secondary italic font-light">Engineered Systems.</span>
+            <span className="text-secondary italic font-light">Digital Systems & AI.</span>
           </h2>
           <p className="text-base text-text-muted font-medium leading-relaxed max-w-2xl border-l-2 border-primary/20 pl-6 italic">
-            Reflections, architectural breakdowns, and practical learnings from developing digital products, video content, and operational software.
+            Reflections, strategic breakdowns, and practical learnings from developing digital products, video content, and AI-assisted client systems.
           </p>
         </div>
       </div>

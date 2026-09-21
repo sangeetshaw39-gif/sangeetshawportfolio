@@ -71,10 +71,10 @@ export default function About() {
         </h1>
         <div className="space-y-4">
           <p className="text-lg md:text-xl text-text-muted font-medium leading-relaxed max-w-3xl">
-            I work at the intersection of business, marketing, creative content, and software engineering. I don't only launch campaigns — I can understand a business model, create the marketing and video content around it, build the web applications or digital workflows required to execute, and track performance end-to-end.
+            I work at the intersection of business, digital marketing, creative content, and AI-assisted product building. I don't only launch campaigns — I understand the business model, create high-converting marketing and video content, and build custom web applications, ERPs, or automations using AI tools when clients require them.
           </p>
           <p className="text-base text-text-muted leading-relaxed max-w-3xl border-l-2 border-primary/20 pl-6 italic">
-            The combination is what makes the difference: having the creative empathy to connect with audiences, backed by the technical capability to build the underlying digital infrastructure.
+            The combination is what makes the difference: having the creative empathy to connect with audiences, backed by the ability to rapidly build the underlying digital platforms using modern AI environments.
           </p>
         </div>
       </div>
@@ -142,12 +142,12 @@ export default function About() {
               Marketer Who Builds. Builder Who Markets.
             </h3>
             <p className="text-sm text-text-muted leading-relaxed">
-              Most projects suffer because marketers don't understand software limitations, while developers don't understand audience psychology. I bridge that divide:
+              Most projects suffer because traditional marketers don't know how to build digital tools, while technical developers don't understand audience psychology. I bridge that divide by pairing growth marketing with rapid AI-assisted product building:
             </p>
             <ul className="space-y-2 text-xs text-text-muted">
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
-                <span><strong className="text-text-main">Audience Strategy:</strong> Knowing what message resonates and why people buy.</span>
+                <span><strong className="text-text-main">Audience Strategy:</strong> Knowing what message resonates and why customers buy.</span>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
@@ -155,7 +155,7 @@ export default function About() {
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
-                <span><strong className="text-text-main">Technical Infrastructure:</strong> Architecting the web app, database, and conversion tracking behind it.</span>
+                <span><strong className="text-text-main">AI-Built Infrastructure:</strong> Building web apps, databases, and conversion pipelines using AI when clients require it.</span>
               </li>
             </ul>
           </div>

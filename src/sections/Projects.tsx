@@ -310,7 +310,7 @@ export default function Projects({ onViewCaseStudy, onContact }: ProjectsProps) 
           Have a Brand, Campaign or Digital Product in Mind?
         </h3>
         <p className="text-text-muted max-w-xl mx-auto text-sm leading-relaxed">
-          Whether you need to scale paid acquisition, produce high-retention video content, or build operational software systems — let's build it together.
+          Whether you need to scale paid acquisition, produce high-retention video content, or build operational digital systems using AI — let's build it together.
         </p>
         <div className="pt-4">
           <button 

@@ -130,7 +130,7 @@ export default function WhatIDo({ onExploreWork, onContact }: WhatIDoProps) {
           <span className="text-secondary italic font-light">& DIGITAL SYSTEMS.</span>
         </h1>
         <p className="text-lg md:text-xl text-text-muted font-medium leading-relaxed max-w-2xl border-l-2 border-primary/20 pl-6 italic">
-          I don't just draft marketing plans or post random graphics. I combine audience strategy, high-impact video content, and custom software systems into a unified growth engine.
+          I don't just draft marketing plans or post random graphics. I combine audience strategy, high-impact video content, and custom digital systems built with AI into a unified growth engine.
         </p>
       </div>
 
@@ -272,13 +272,13 @@ export default function WhatIDo({ onExploreWork, onContact }: WhatIDoProps) {
         <div className="max-w-3xl space-y-3">
           <div className="flex items-center gap-2 text-primary font-headline text-[10px] uppercase tracking-[0.4em] font-black">
             <Bot className="w-4 h-4" />
-            Engineering Velocity Multiplier
+            AI-Assisted Building on Client Requirement
           </div>
           <h2 className="text-3xl md:text-5xl font-headline font-bold text-text-main leading-tight">
-            Building with AI Coding Agents.
+            Building with AI Tools.
           </h2>
           <p className="text-text-muted text-sm md:text-base leading-relaxed">
-            I leverage advanced AI development environments (Antigravity, Gemini) as multipliers to turn clear architectural specifications into production software rapidly — while maintaining total control over domain logic and data integrity.
+            When clients need custom applications, ERPs, or internal automations, I leverage advanced AI environments (Antigravity, Gemini) to build and deploy production systems rapidly — turning client requirements into working tools without the overhead of traditional software agencies.
           </p>
         </div>
 
@@ -300,7 +300,7 @@ export default function WhatIDo({ onExploreWork, onContact }: WhatIDoProps) {
 
         <div className="p-4 bg-primary/5 border-l-2 border-primary rounded-r-md text-xs text-text-muted leading-relaxed">
           <strong className="text-text-main">The Difference: </strong>
-          AI tools don't replace business understanding. The quality of the final software depends on how clearly you define the domain requirements, database schemas, and edge cases.
+          AI tools don't replace business understanding. The quality of the final client tool depends on how clearly you define client requirements, operational rules, and workflows.
         </div>
       </section>
 
