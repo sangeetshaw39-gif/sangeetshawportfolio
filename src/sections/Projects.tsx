@@ -114,8 +114,8 @@ export default function Projects({ onViewCaseStudy, onContact }: ProjectsProps) 
           <div className="lg:col-span-6 space-y-4">
             <div className="overflow-hidden rounded-xl border border-primary/20 bg-bg-surface aspect-video relative group/img cursor-pointer" onClick={() => onViewCaseStudy('case-study-cashall')}>
               <img 
-                src="/assets/cashall.jpg" 
-                alt="CashALL Platform Dashboard" 
+                src="/assets/cashall.png" 
+                alt="CashALL Platform Live Interface" 
                 className="w-full h-full object-cover group-hover/img:scale-105 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/80 via-transparent to-transparent opacity-60" />

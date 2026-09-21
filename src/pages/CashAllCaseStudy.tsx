@@ -172,6 +172,59 @@ export default function CashAllCaseStudy({ onBack }: CaseStudyProps) {
         </div>
       </section>
 
+      {/* Real Live Platform Gallery */}
+      <section className="space-y-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <span className="text-secondary font-headline text-[10px] uppercase tracking-[0.3em] font-black block">
+              LIVE PLATFORM INTERFACES // cashall.in
+            </span>
+            <h3 className="font-headline text-2xl font-bold text-text-main">Production Web Application</h3>
+          </div>
+          <a
+            href="https://cashall.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 border border-primary/30 text-primary font-headline text-xs uppercase font-bold tracking-widest hover:bg-primary/10 transition-all rounded-sm"
+          >
+            Visit Live Site (cashall.in)
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="glass-card overflow-hidden ghost-border rounded-xl group space-y-2 p-2">
+            <div className="aspect-[16/10] overflow-hidden rounded-lg bg-bg-surface">
+              <img src="/assets/cashall.png" alt="CashALL Live Homepage" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" />
+            </div>
+            <div className="p-2">
+              <h4 className="font-headline text-xs font-bold text-text-main">Homepage & Valuation Funnel</h4>
+              <p className="text-[10px] text-text-muted">Instant price estimation & doorstep booking</p>
+            </div>
+          </div>
+
+          <div className="glass-card overflow-hidden ghost-border rounded-xl group space-y-2 p-2">
+            <div className="aspect-[16/10] overflow-hidden rounded-lg bg-bg-surface">
+              <img src="/assets/cashall_devices.png" alt="Device Categories" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" />
+            </div>
+            <div className="p-2">
+              <h4 className="font-headline text-xs font-bold text-text-main">Device Catalog & Services</h4>
+              <p className="text-[10px] text-text-muted">Phones, Laptops, Tablets & PS5 Rentals</p>
+            </div>
+          </div>
+
+          <div className="glass-card overflow-hidden ghost-border rounded-xl group space-y-2 p-2">
+            <div className="aspect-[16/10] overflow-hidden rounded-lg bg-bg-surface">
+              <img src="/assets/cashall_reviews.png" alt="Verified Seller Testimonials" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" />
+            </div>
+            <div className="p-2">
+              <h4 className="font-headline text-xs font-bold text-text-main">Verified Seller Testimonials</h4>
+              <p className="text-[10px] text-text-muted">Live customer trust & doorstep payout feedback</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 2. THE PROBLEM & SOLUTION */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-16 py-8 border-y border-primary/10">
         <div className="lg:col-span-6 space-y-6">
