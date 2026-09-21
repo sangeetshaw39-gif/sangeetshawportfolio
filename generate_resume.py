@@ -222,7 +222,7 @@ def create_resume(output_path):
     edu_table = Table([
         [
             Paragraph("<b>Bachelor of Commerce (B.Com)</b> — Umeschandra College", item_title),
-            Paragraph("<b>2023 – 2027</b>", item_sub)
+            Paragraph("<b>2023 – 2026</b>", item_sub)
         ],
         [
             Paragraph("<b>Class XII (ISC) — 77% SCORE</b> &nbsp;|&nbsp; Agrasain Boys' School", item_title),
