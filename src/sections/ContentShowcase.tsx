@@ -11,7 +11,8 @@ import {
   Eye, 
   TrendingUp,
   Flame,
-  ArrowUpRight
+  ArrowUpRight,
+  Instagram
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -165,6 +166,32 @@ export default function ContentShowcase() {
             </button>
           ))}
         </div>
+      </div>
+
+      {/* Brand Channel Proof Banner */}
+      <div className="glass-card p-5 ghost-border flex flex-wrap items-center justify-between gap-4 bg-primary/[0.03]">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+            <Instagram className="w-5 h-5" />
+          </div>
+          <div>
+            <span className="text-[10px] font-headline uppercase tracking-widest text-secondary font-black block">
+              Active Brand Management
+            </span>
+            <p className="text-xs text-text-muted">
+              Managing company content strategy, Reels & creative distribution on Instagram: <strong className="text-text-main">@cashall_official</strong>
+            </p>
+          </div>
+        </div>
+        <a
+          href="https://www.instagram.com/cashall_official/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-5 py-2.5 bg-primary/10 border border-primary/25 text-primary text-xs font-headline font-bold uppercase tracking-wider hover:bg-primary/20 transition-all rounded-sm flex items-center gap-2"
+        >
+          Explore @cashall_official
+          <ArrowUpRight className="w-4 h-4" />
+        </a>
       </div>
 
       {/* Media Grid */}

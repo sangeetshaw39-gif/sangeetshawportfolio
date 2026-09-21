@@ -10,7 +10,8 @@ import {
   Smartphone, 
   CheckCircle2, 
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  Instagram
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -172,12 +173,12 @@ export default function Projects({ onViewCaseStudy, onContact }: ProjectsProps) 
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-wrap gap-3 pt-2">
               <button
                 onClick={() => onViewCaseStudy('case-study-cashall')}
-                className="flex-1 min-w-[180px] flex items-center justify-center gap-2 py-4 bg-primary text-bg-dark font-headline text-xs uppercase font-bold tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_0_25px_rgba(255,193,208,0.25)]"
+                className="flex-1 min-w-[160px] flex items-center justify-center gap-2 py-3.5 bg-primary text-bg-dark font-headline text-xs uppercase font-bold tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_0_25px_rgba(255,193,208,0.25)]"
               >
-                View Deep Case Study
+                View Case Study
                 <ArrowRight className="w-4 h-4" />
               </button>
               
@@ -185,10 +186,20 @@ export default function Projects({ onViewCaseStudy, onContact }: ProjectsProps) 
                 href="https://cashall.in/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 min-w-[180px] flex items-center justify-center gap-2 py-4 border border-primary/30 text-primary font-headline text-xs uppercase font-bold tracking-widest hover:bg-primary/10 active:scale-95 transition-all"
+                className="flex-1 min-w-[140px] flex items-center justify-center gap-2 py-3.5 border border-primary/30 text-primary font-headline text-xs uppercase font-bold tracking-widest hover:bg-primary/10 active:scale-95 transition-all"
               >
-                Visit Live Platform
-                <ExternalLink className="w-4 h-4" />
+                cashall.in
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+
+              <a
+                href="https://www.instagram.com/cashall_official/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 min-w-[170px] flex items-center justify-center gap-2 py-3.5 border border-secondary/30 text-secondary font-headline text-xs uppercase font-bold tracking-widest hover:bg-secondary/10 active:scale-95 transition-all"
+              >
+                <Instagram className="w-3.5 h-3.5" />
+                @cashall_official
               </a>
             </div>
           </div>

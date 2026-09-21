@@ -25,7 +25,8 @@ import {
   Server,
   Share2,
   Lock,
-  PhoneCall
+  PhoneCall,
+  Instagram
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -80,19 +81,28 @@ export default function CashAllCaseStudy({ onBack }: CaseStudyProps) {
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to Work
         </button>
-        <div className="flex flex-wrap items-center gap-4">
+        <div className="flex flex-wrap items-center gap-3">
           <a 
             href="https://cashall.in/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2.5 bg-primary text-bg-dark font-headline text-[10px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_0_25px_rgba(255,193,208,0.3)]"
+            className="flex items-center gap-2 px-4 py-2 bg-primary text-bg-dark font-headline text-[10px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_0_25px_rgba(255,193,208,0.3)]"
           >
             <ExternalLink className="w-3.5 h-3.5" />
-            Visit Live Platform (cashall.in)
+            cashall.in
           </a>
-          <div className="flex items-center gap-3 text-[10px] font-headline uppercase tracking-widest text-primary font-bold border-l border-primary/20 pl-4">
+          <a 
+            href="https://www.instagram.com/cashall_official/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 border border-primary/30 text-primary font-headline text-[10px] font-black uppercase tracking-widest hover:bg-primary/10 active:scale-95 transition-all"
+          >
+            <Instagram className="w-3.5 h-3.5" />
+            @cashall_official
+          </a>
+          <div className="flex items-center gap-3 text-[10px] font-headline uppercase tracking-widest text-primary font-bold border-l border-primary/20 pl-3">
             <Activity className="w-3.5 h-3.5 text-secondary animate-pulse" />
-            Status: Operational Recommerce Platform
+            Operational Platform
           </div>
         </div>
       </nav>
@@ -563,6 +573,32 @@ export default function CashAllCaseStudy({ onBack }: CaseStudyProps) {
             </ul>
           </div>
 
+          <div className="glass-card p-8 ghost-border space-y-4 hover:border-primary/40 transition-all md:col-span-2">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-primary/10 rounded-sm flex items-center justify-center text-primary">
+                  <Instagram className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-headline text-xl font-bold text-text-main">Social Media & Brand Growth Management</h3>
+                  <span className="text-[10px] text-secondary font-mono font-bold">@cashall_official</span>
+                </div>
+              </div>
+              <a 
+                href="https://www.instagram.com/cashall_official/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-primary/10 border border-primary/25 text-primary text-xs font-headline font-bold uppercase tracking-wider hover:bg-primary/20 transition-all rounded-sm flex items-center gap-2"
+              >
+                View Brand Instagram
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+            <p className="text-xs text-text-muted leading-relaxed">
+              Directly managing the company's official Instagram handle (<strong className="text-text-main">@cashall_official</strong>) — designing the creative brand aesthetic, writing hook-driven scripts, producing short-form video reels that illustrate phone valuation benefits, and crafting promotional campaign visuals.
+            </p>
+          </div>
+
         </div>
       </section>
 
@@ -599,24 +635,33 @@ export default function CashAllCaseStudy({ onBack }: CaseStudyProps) {
         className="glass-card p-12 text-center ghost-border bg-primary/5 space-y-6"
       >
         <h3 className="text-3xl md:text-4xl font-headline font-bold text-text-main">
-          Explore the Live Platform
+          Explore the Live Platform & Brand
         </h3>
         <p className="text-text-muted max-w-xl mx-auto text-sm">
-          CashALL is actively operating in the recommerce market. Experience the customer valuation journey and digital interface firsthand.
+          CashALL is actively operating in the recommerce market. Experience the customer valuation journey firsthand and check out the official brand content.
         </p>
         <div className="pt-4 flex flex-wrap justify-center gap-4">
           <a 
             href="https://cashall.in/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="px-10 py-4 bg-primary text-bg-dark font-bold tracking-widest uppercase text-xs hover:scale-105 active:scale-95 transition-all shadow-[0_0_30px_rgba(255,193,208,0.3)] flex items-center gap-3"
+            className="px-8 py-4 bg-primary text-bg-dark font-bold tracking-widest uppercase text-xs hover:scale-105 active:scale-95 transition-all shadow-[0_0_30px_rgba(255,193,208,0.3)] flex items-center gap-2"
           >
             Open cashall.in
             <ExternalLink className="w-4 h-4" />
           </a>
+          <a 
+            href="https://www.instagram.com/cashall_official/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="px-8 py-4 border border-primary/30 text-primary font-bold tracking-widest uppercase text-xs hover:bg-primary/10 active:scale-95 transition-all flex items-center gap-2"
+          >
+            <Instagram className="w-4 h-4" />
+            @cashall_official
+          </a>
           <button 
             onClick={onBack}
-            className="px-8 py-4 ghost-border text-primary font-bold tracking-widest uppercase text-xs hover:bg-primary/10 transition-all"
+            className="px-8 py-4 ghost-border text-text-muted hover:text-text-main font-bold tracking-widest uppercase text-xs hover:bg-white/5 transition-all"
           >
             Return to Portfolio Work
           </button>
