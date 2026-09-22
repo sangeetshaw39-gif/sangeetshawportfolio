@@ -143,7 +143,7 @@ def create_resume(output_path):
     cashall_exp_head.setStyle(TableStyle([('VALIGN', (0,0), (-1,-1), 'MIDDLE'), ('ALIGN', (1,0), (1,0), 'RIGHT'), ('PADDING', (0,0), (-1,-1), 0)]))
     story.append(cashall_exp_head)
     story.append(Paragraph("<i>Digital Marketing & Product Associate | Startup Venture — Used-Device Recommerce (cashall.in)</i>", item_sub))
-    story.append(Paragraph("• Built CashALL's <b>ERP & digital business platform</b> using Antigravity.", bullet_style))
+    story.append(Paragraph("• Built CashALL's <b>ERP & digital business platform</b> using AI assisted workflow.", bullet_style))
     story.append(Paragraph("• Developed <b>customer, agent, admin, support, and operations workflows</b>.", bullet_style))
     story.append(Paragraph("• Built the <b>device valuation, quotation, order, inspection, and billing systems</b>.", bullet_style))
     story.append(Paragraph("• Manage <b>social media, Reels, ad creatives, and performance marketing</b> (@cashall_official).", bullet_style))

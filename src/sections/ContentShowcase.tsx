@@ -5,14 +5,11 @@ import {
   ExternalLink, 
   X, 
   Sparkles, 
-  Eye, 
   TrendingUp,
-  Flame,
   ArrowUpRight,
   Instagram,
-  Heart,
-  MessageCircle,
-  Share2
+  Video,
+  Layers
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -20,8 +17,8 @@ interface ContentItem {
   id: string;
   title: string;
   type: 'cashall' | 'personal';
-  category: 'reels' | 'carousels' | 'ads';
   categoryLabel: string;
+  rankBadge: string;
   format: string;
   link: string;
   hook: string;
@@ -29,18 +26,18 @@ interface ContentItem {
   strategy: string;
   platform: string;
   channel: string;
-  metrics?: { views?: string; likes?: string; comments?: string; tag?: string };
+  metrics: { views: string };
   visualBg: string;
 }
 
-const contentItems: ContentItem[] = [
-  // --- CASHALL OFFICIAL BRAND CONTENT (ORDERED BY HIGHEST VIEWS) ---
+// --- TOP 4 CASHALL OFFICIAL BRAND REELS ---
+const brandReels: ContentItem[] = [
   {
     id: 'c1',
     title: 'CashALL Valuation & Doorstep Buyback Reel',
     type: 'cashall',
-    category: 'reels',
     categoryLabel: 'Brand Reel (Top Viral)',
+    rankBadge: 'Rank #1 Viral',
     format: '9:16 Video Reel',
     link: 'https://www.instagram.com/reel/Dcz-DCvRyn2/',
     hook: '"Purana phone bechne ke liye shop ke chakkar kyun lagana?"',
@@ -48,15 +45,15 @@ const contentItems: ContentItem[] = [
     strategy: 'High-intent pain point acquisition eliminating customer friction of traveling to retail shops with promises of instant digital payment.',
     platform: 'Instagram Reels (@cashall_official)',
     channel: '@cashall_official',
-    metrics: { views: '72.3K+ Views', likes: '52 Likes' },
+    metrics: { views: '72.3K+ Views' },
     visualBg: 'from-amber-950/40 via-bg-surface to-rose-950/30'
   },
   {
     id: 'c2',
     title: 'Ganesh Chaturthi Festive Smart Upgrade Campaign',
     type: 'cashall',
-    category: 'reels',
     categoryLabel: 'Brand Campaign Reel',
+    rankBadge: 'Rank #2 Festive',
     format: '9:16 Video Reel',
     link: 'https://www.instagram.com/reel/DdQdrnqx0RR/',
     hook: '"🙏✨ Bappa aaye hain, aur saath laaye hain smart upgrade ka message! 📱"',
@@ -64,15 +61,15 @@ const contentItems: ContentItem[] = [
     strategy: 'Cultural resonance paired with an urgent monetization hook to capture festive season upgrade intent.',
     platform: 'Instagram Reels (@cashall_official)',
     channel: '@cashall_official',
-    metrics: { views: '32.8K+ Views', likes: '10 Likes' },
+    metrics: { views: '32.8K+ Views' },
     visualBg: 'from-yellow-950/40 via-bg-surface to-amber-900/30'
   },
   {
     id: 'c3',
     title: 'Device Resale & Value Depreciation Awareness',
     type: 'cashall',
-    category: 'reels',
     categoryLabel: 'Educational Brand Reel',
+    rankBadge: 'Rank #3 Education',
     format: '9:16 Video Reel',
     link: 'https://www.instagram.com/reel/DceJQr1p1YF/',
     hook: '"Your phone is still working. But is its value still working for you? 📱"',
@@ -80,15 +77,15 @@ const contentItems: ContentItem[] = [
     strategy: 'Loss-aversion psychology targeting gadget hoarders to prompt immediate valuation checks.',
     platform: 'Instagram Reels (@cashall_official)',
     channel: '@cashall_official',
-    metrics: { views: '26.0K+ Views', likes: '22 Likes' },
+    metrics: { views: '26.0K+ Views' },
     visualBg: 'from-rose-950/40 via-bg-surface to-purple-950/30'
   },
   {
     id: 'c4',
     title: 'Hassle-Free 3-Step Doorstep Selling Workflow',
     type: 'cashall',
-    category: 'reels',
     categoryLabel: 'Workflow Conversion Reel',
+    rankBadge: 'Rank #4 Conversion',
     format: '9:16 Video Reel',
     link: 'https://www.instagram.com/reel/DctwqFVvMMc/',
     hook: '"Ab purana phone sell karne ke liye shop ke chakkar lagane ki zarurat nahi."',
@@ -96,97 +93,19 @@ const contentItems: ContentItem[] = [
     strategy: 'Workflow simplification converting hesitant users into active pickup bookings.',
     platform: 'Instagram Reels (@cashall_official)',
     channel: '@cashall_official',
-    metrics: { views: '15.6K+ Views', likes: '21 Likes' },
+    metrics: { views: '15.6K+ Views' },
     visualBg: 'from-blue-950/40 via-bg-surface to-cyan-950/30'
-  },
-  {
-    id: 'c5',
-    title: 'Relatable Phone Upgrade Comedy Skit',
-    type: 'cashall',
-    category: 'reels',
-    categoryLabel: 'Brand Humor Reel',
-    format: '9:16 Video Reel',
-    link: 'https://www.instagram.com/reel/Dcge804piFo/',
-    hook: '"Your phone has one excuse: \'Main abhi bhi chal raha hoon.\' 😂📱"',
-    description: 'Humorous relatable content dissecting the common excuses users make before finally trading in their aging devices.',
-    strategy: 'Observational humor engineered for high organic shares, comments, and algorithm discovery.',
-    platform: 'Instagram Reels (@cashall_official)',
-    channel: '@cashall_official',
-    metrics: { views: '10.2K+ Views', likes: '19 Likes' },
-    visualBg: 'from-pink-950/40 via-bg-surface to-indigo-950/30'
-  },
-  {
-    id: 'c6',
-    title: 'Raksha Bandhan Story & Festive Gifting Campaign',
-    type: 'cashall',
-    category: 'reels',
-    categoryLabel: 'Festive Story Reel',
-    format: '9:16 Video Reel',
-    link: 'https://www.instagram.com/reel/DcjbgdDPNAV/',
-    hook: '"Rakhi ka gift lena tha… salary abhi aayi nahi thi. 😅📱"',
-    description: 'Narrative reel demonstrating how selling unused household phones provided immediate budget for Rakhi gifts.',
-    strategy: 'Relatable situational dilemma driving instant utility and emotional resonance.',
-    platform: 'Instagram Reels (@cashall_official)',
-    channel: '@cashall_official',
-    metrics: { views: '7.6K+ Views', likes: '22 Likes' },
-    visualBg: 'from-orange-950/40 via-bg-surface to-rose-950/30'
-  },
-  {
-    id: 'c7',
-    title: 'Doorstep Inspection & Dynamic Verification Reel',
-    type: 'cashall',
-    category: 'reels',
-    categoryLabel: 'Field Inspection Reel',
-    format: '9:16 Video Reel',
-    link: 'https://www.instagram.com/reel/DdWhihhJ30y/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==',
-    hook: '"Watch how our technicians verify condition and transfer payment in 5 minutes."',
-    description: 'Behind-the-scenes field agent inspection reel showing transparency, digital quotation checks, and instant UPI transfer on the spot.',
-    strategy: 'Trust-building creative that resolves customer hesitation regarding on-site technician inspections.',
-    platform: 'Instagram Reels (@cashall_official)',
-    channel: '@cashall_official',
-    metrics: { views: '4.6K+ Views', likes: '37 Likes' },
-    visualBg: 'from-emerald-950/40 via-bg-surface to-slate-900'
-  },
-  {
-    id: 'c8',
-    title: 'CashALL Recommerce Customer Acquisition Campaign',
-    type: 'cashall',
-    category: 'ads',
-    categoryLabel: 'Performance Ad Creative',
-    format: 'Promotional Post',
-    link: 'https://www.instagram.com/p/DdQgp8gkeAU/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==',
-    hook: '"Sell your old devices for the best value with CashALL."',
-    description: 'High-contrast promotional visual engineered for feed discovery, emphasizing instant payout, multi-category support (phones, laptops, tablets), and doorstep service.',
-    strategy: 'Direct-response conversion creative engineered to drive high-intent traffic to cashall.in.',
-    platform: 'Instagram Feed (@cashall_official)',
-    channel: '@cashall_official',
-    metrics: { tag: 'Direct Ad Creative' },
-    visualBg: 'from-purple-950/40 via-bg-surface to-pink-950/30'
-  },
-  {
-    id: 'c9',
-    title: 'CashALL Device Buyback Guarantee Post',
-    type: 'cashall',
-    category: 'carousels',
-    categoryLabel: 'Brand Positioning',
-    format: 'Square Post / Deck',
-    link: 'https://www.instagram.com/p/DdMAiGYCZgu/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==',
-    hook: '"Why take less at offline shops? Get deterministic pricing online."',
-    description: 'Brand messaging post comparing traditional offline phone trade-in friction with CashALL’s transparent online algorithmic valuation.',
-    strategy: 'Brand positioning creative highlighting fair market value and customer convenience.',
-    platform: 'Instagram (@cashall_official)',
-    channel: '@cashall_official',
-    metrics: { tag: 'Value Guarantee' },
-    visualBg: 'from-orange-950/40 via-bg-surface to-slate-900'
-  },
+  }
+];
 
-  // --- PERSONAL TOP-VIEWED REELS (@sangeetshaw_i) ---
+// --- TOP 4 PERSONAL CREATOR REELS (@sangeetshaw_i) ---
+const personalReels: ContentItem[] = [
   {
     id: 'p1',
     title: 'Personal Showcase: Viral Motion & Lifestyle Reel',
     type: 'personal',
-    category: 'reels',
     categoryLabel: 'Personal Reel (Top Viral)',
+    rankBadge: 'Rank #1 Viral',
     format: '9:16 Video Reel',
     link: 'https://www.instagram.com/reel/DVLzc39kpvN/',
     hook: 'Top Performer: High-retention audio & cinematic pacing',
@@ -194,15 +113,15 @@ const contentItems: ContentItem[] = [
     strategy: 'Hook retention and audio-trend alignment engineered to capture audience attention within the first 1.5 seconds.',
     platform: 'Instagram Reels (@sangeetshaw_i)',
     channel: '@sangeetshaw_i',
-    metrics: { views: '2,528+ Views', likes: '127 Likes', comments: '55 Comments' },
+    metrics: { views: '2,528+ Views' },
     visualBg: 'from-blue-950/40 via-bg-surface to-indigo-950/30'
   },
   {
     id: 'p2',
     title: 'Personal Creative: Kinetic Cut & Motion Reel',
     type: 'personal',
-    category: 'reels',
-    categoryLabel: 'Personal Reel',
+    categoryLabel: 'Creative Kinetic Reel',
+    rankBadge: 'Rank #2 Kinetic',
     format: '9:16 Video Reel',
     link: 'https://www.instagram.com/reel/DZZ9zajB7VB/',
     hook: 'Visual rhythm & color-graded aesthetic',
@@ -210,15 +129,15 @@ const contentItems: ContentItem[] = [
     strategy: 'Visual mood curation engineered for repeat plays and high completion rates.',
     platform: 'Instagram Reels (@sangeetshaw_i)',
     channel: '@sangeetshaw_i',
-    metrics: { views: '1,131+ Views', likes: '72 Likes', comments: '14 Comments' },
+    metrics: { views: '1,131+ Views' },
     visualBg: 'from-purple-950/40 via-bg-surface to-slate-900'
   },
   {
     id: 'p3',
     title: 'Personal Narrative: Lifestyle & Aesthetic Cut',
     type: 'personal',
-    category: 'reels',
-    categoryLabel: 'Personal Reel',
+    categoryLabel: 'Narrative Aesthetic Reel',
+    rankBadge: 'Rank #3 Aesthetic',
     format: '9:16 Video Reel',
     link: 'https://www.instagram.com/reel/DWv5P6nAcVG/',
     hook: 'Seamless cut-on-action transitions',
@@ -226,43 +145,38 @@ const contentItems: ContentItem[] = [
     strategy: 'Pacing experiments designed to boost watch time and interaction rate.',
     platform: 'Instagram Reels (@sangeetshaw_i)',
     channel: '@sangeetshaw_i',
-    metrics: { views: '1,094+ Views', likes: '63 Likes', comments: '13 Comments' },
+    metrics: { views: '1,094+ Views' },
     visualBg: 'from-emerald-950/40 via-bg-surface to-zinc-900'
   },
   {
     id: 'p4',
     title: 'Personal Exploration: Dynamic Sequence Reel',
     type: 'personal',
-    category: 'reels',
-    categoryLabel: 'Personal Reel',
+    categoryLabel: 'Dynamic Sequence Reel',
+    rankBadge: 'Rank #4 Engagement',
     format: '9:16 Video Reel',
     link: 'https://www.instagram.com/reel/DV6B9NTAfjv/',
     hook: 'Audience-engaging community hook',
-    description: 'High engagement reel that stimulated 37+ direct comments and active discussion, testing call-to-action captions.',
+    description: 'High engagement reel that stimulated direct comments and active community discussion, testing call-to-action captions.',
     strategy: 'Community engagement mechanics tested through open-ended caption hooks.',
     platform: 'Instagram Reels (@sangeetshaw_i)',
     channel: '@sangeetshaw_i',
-    metrics: { views: '1,069+ Views', likes: '75 Likes', comments: '37 Comments' },
+    metrics: { views: '1,069+ Views' },
     visualBg: 'from-rose-950/40 via-bg-surface to-pink-950/30'
   }
 ];
 
 export default function ContentShowcase() {
-  const [filter, setFilter] = useState<'all' | 'cashall' | 'personal' | 'reels'>('all');
+  const [filter, setFilter] = useState<'all' | 'brand' | 'personal'>('all');
   const [activeModalItem, setActiveModalItem] = useState<ContentItem | null>(null);
 
-  const filteredItems = contentItems.filter(item => {
-    if (filter === 'all') return true;
-    if (filter === 'cashall') return item.type === 'cashall';
-    if (filter === 'personal') return item.type === 'personal';
-    if (filter === 'reels') return item.category === 'reels';
-    return true;
-  });
+  const showBrand = filter === 'all' || filter === 'brand';
+  const showPersonal = filter === 'all' || filter === 'personal';
 
   return (
-    <div className="space-y-20 py-12">
+    <div className="space-y-16 py-12">
       
-      {/* Header */}
+      {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
         <div className="max-w-3xl space-y-4">
           <motion.span 
@@ -270,26 +184,25 @@ export default function ContentShowcase() {
             whileInView={{ opacity: 1 }}
             className="text-primary font-headline text-xs uppercase tracking-[0.3em] block"
           >
-            CREATIVE SHOWCASE // VIDEO & SOCIAL MEDIA
+            SHORT-FORM VIDEO SHOWCASE // SEPARATED PORTFOLIOS
           </motion.span>
           <h1 className="text-4xl md:text-6xl font-headline font-bold tracking-tighter text-text-main leading-tight">
-            CONTENT, REELS & <br />
+            TOP REELS: BRAND & <br />
             <span className="text-primary italic font-light drop-shadow-[0_0_15px_rgba(255,193,208,0.3)]">
-              SOCIAL MEDIA CREATIVES.
+              PERSONAL CREATIVE.
             </span>
           </h1>
           <p className="text-base md:text-lg text-text-muted font-medium leading-relaxed max-w-2xl border-l-2 border-primary/20 pl-6 italic">
-            A live showcase of brand campaigns I manage for <strong className="text-text-main">CashALL (@cashall_official)</strong> alongside my top-performing personal short-form video reels (<strong className="text-text-main">@sangeetshaw_i</strong>).
+            Separated showcases featuring the <strong className="text-text-main">Top 4 CashALL Brand Reels</strong> (engineered for recommerce customer acquisition) and the <strong className="text-text-main">Top 4 Personal Creator Reels</strong> (engineered for aesthetic pacing, audio synchronization, and kinetic cuts).
           </p>
         </div>
 
-        {/* Filter Pills */}
+        {/* Filter Navigation */}
         <div className="flex flex-wrap gap-2 p-1.5 glass-card ghost-border">
           {[
-            { id: 'all', label: 'All Content' },
-            { id: 'cashall', label: 'CashALL Top Reels' },
-            { id: 'personal', label: 'Personal Top Reels' },
-            { id: 'reels', label: 'Video Reels Only' }
+            { id: 'all', label: 'All Reels (Both)' },
+            { id: 'brand', label: 'CashALL Brand Reels (Top 4)' },
+            { id: 'personal', label: 'Personal Reels (Top 4)' }
           ].map((btn) => (
             <button
               key={btn.id}
@@ -307,169 +220,294 @@ export default function ContentShowcase() {
         </div>
       </div>
 
-      {/* Two Live Channel Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        {/* Company Channel */}
-        <div className="glass-card p-6 ghost-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-primary/[0.03]">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-              <Instagram className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2 mb-0.5">
-                <span className="text-[9px] font-headline uppercase tracking-widest text-secondary font-black block">
-                  Company Brand Management
-                </span>
-                <span className="px-2 py-0.5 bg-primary/20 text-primary text-[9px] font-black uppercase rounded-full">
-                  165K+ Top Views
-                </span>
+      {/* ========================================================================= */}
+      {/* SECTION 1: CASHALL BRAND REELS (TOP 4)                                   */}
+      {/* ========================================================================= */}
+      {showBrand && (
+        <section className="space-y-8">
+          
+          {/* Brand Section Header Card */}
+          <div className="glass-card p-6 md:p-8 ghost-border bg-gradient-to-r from-primary/[0.07] via-bg-surface to-bg-surface flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-l-4 border-l-primary">
+            <div className="flex items-start md:items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/30 flex items-center justify-center text-primary shrink-0 shadow-[0_0_20px_rgba(255,193,208,0.15)]">
+                <Video className="w-7 h-7" />
               </div>
-              <h4 className="font-headline text-lg font-bold text-text-main">@cashall_official</h4>
-              <p className="text-xs text-text-muted">Top-performing short-form video reels, ad creatives & doorstep recommerce acquisition</p>
-            </div>
-          </div>
-          <a
-            href="https://www.instagram.com/cashall_official/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 bg-primary text-bg-dark text-xs font-headline font-bold uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all rounded-sm flex items-center gap-1.5 shrink-0"
-          >
-            Visit Channel
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
-        </div>
-
-        {/* Personal Channel */}
-        <div className="glass-card p-6 ghost-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-secondary/[0.03]">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
-              <Instagram className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2 mb-0.5">
-                <span className="text-[9px] font-headline uppercase tracking-widest text-primary font-black block">
-                  Personal Creator Channel
-                </span>
-                <span className="px-2 py-0.5 bg-secondary/20 text-secondary text-[9px] font-black uppercase rounded-full">
-                  5.8K+ Top Views
-                </span>
-              </div>
-              <h4 className="font-headline text-lg font-bold text-text-main">@sangeetshaw_i</h4>
-              <p className="text-xs text-text-muted">Lifestyle, short-form pacing & creative editing</p>
-            </div>
-          </div>
-          <a
-            href="https://www.instagram.com/sangeetshaw_i/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 border border-secondary/30 text-secondary text-xs font-headline font-bold uppercase tracking-wider hover:bg-secondary/10 active:scale-95 transition-all rounded-sm flex items-center gap-1.5 shrink-0"
-          >
-            Visit Profile
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
-        </div>
-
-      </div>
-
-      {/* Media Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-        {filteredItems.map((item) => (
-          <motion.div
-            key={item.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="glass-card ghost-border overflow-hidden group flex flex-col justify-between hover:-translate-y-1.5 transition-all duration-500"
-          >
-            {/* Visual Mockup Header */}
-            <div 
-              className={cn(
-                "relative bg-gradient-to-br border-b border-primary/10 p-6 flex flex-col justify-between overflow-hidden min-h-[200px]",
-                item.visualBg
-              )}
-            >
-              <div className="flex justify-between items-start relative z-10">
-                <span className="px-2.5 py-1 bg-bg-dark/80 backdrop-blur-md border border-primary/20 text-primary text-[9px] font-black uppercase tracking-widest rounded-sm">
-                  {item.categoryLabel}
-                </span>
-                <span className="text-[10px] text-text-muted font-mono font-medium">
-                  {item.channel}
-                </span>
-              </div>
-
-              {/* Center Play Button (Click to open Instagram link) */}
-              <div className="my-auto py-4 flex justify-center items-center relative z-10">
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-14 h-14 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-bg-dark transition-all duration-300 shadow-[0_0_25px_rgba(255,193,208,0.25)]"
-                  title="Watch on Instagram"
-                >
-                  <Play className="w-6 h-6 fill-current ml-0.5" />
-                </a>
-              </div>
-
-              {/* Metric Tag or Views Tag */}
-              <div className="relative z-10 flex items-center justify-between">
-                {item.metrics?.views ? (
-                  <span className="px-2 py-0.5 bg-bg-dark/90 text-primary text-[10px] font-black uppercase tracking-wider rounded-sm flex items-center gap-1">
-                    <TrendingUp className="w-3 h-3 text-secondary" />
-                    {item.metrics.views}
+              <div className="space-y-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-[10px] font-headline uppercase tracking-widest text-secondary font-black block">
+                    Company Brand Management
                   </span>
-                ) : (
-                  <span className="text-[9px] uppercase tracking-widest text-secondary font-black block">
-                    {item.metrics?.tag || 'Featured Asset'}
+                  <span className="px-2.5 py-0.5 bg-primary/20 text-primary text-[10px] font-black uppercase rounded-full">
+                    146.7K+ Top 4 Views
                   </span>
-                )}
-                {item.metrics?.likes && (
-                  <span className="text-[10px] font-mono text-text-muted flex items-center gap-1">
-                    <Heart className="w-3 h-3 text-primary fill-current" /> {item.metrics.likes}
+                  <span className="px-2 py-0.5 bg-white/5 text-text-muted text-[10px] font-mono rounded-full">
+                    Top 4 Selected
                   </span>
-                )}
-              </div>
-            </div>
-
-            {/* Content Details */}
-            <div className="p-5 flex-grow flex flex-col justify-between space-y-4">
-              <div className="space-y-2">
-                <h3 className="font-headline text-base font-bold text-text-main group-hover:text-primary transition-colors leading-snug">
-                  {item.title}
-                </h3>
-                <p className="text-[11px] text-text-muted leading-relaxed line-clamp-2">
-                  {item.description}
+                </div>
+                <h2 className="font-headline text-2xl md:text-3xl font-bold text-text-main">
+                  CashALL Official — Top 4 Brand Reels
+                </h2>
+                <p className="text-xs md:text-sm text-text-muted max-w-2xl">
+                  High-intent problem hooks, customer friction elimination, and doorstep recommerce acquisition that drove over 146,700+ views across CashALL's top performing video campaigns.
                 </p>
               </div>
+            </div>
 
-              <div className="pt-3 border-t border-white/5 space-y-2 text-[10px]">
-                <div className="text-text-muted line-clamp-1 italic">
-                  Hook: "{item.hook}"
+            <a
+              href="https://www.instagram.com/cashall_official/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 bg-primary text-bg-dark text-xs font-headline font-bold uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all rounded-sm flex items-center gap-2 shrink-0 shadow-[0_0_15px_rgba(255,193,208,0.2)]"
+            >
+              <Instagram className="w-4 h-4" />
+              <span>@cashall_official</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          {/* Brand Reels 4-Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+            {brandReels.map((item) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="glass-card ghost-border overflow-hidden group flex flex-col justify-between hover:-translate-y-1.5 transition-all duration-500 hover:border-primary/40"
+              >
+                {/* Visual Mockup Header */}
+                <div 
+                  className={cn(
+                    "relative bg-gradient-to-br border-b border-primary/10 p-6 flex flex-col justify-between overflow-hidden min-h-[210px]",
+                    item.visualBg
+                  )}
+                >
+                  <div className="flex justify-between items-start relative z-10">
+                    <span className="px-2.5 py-1 bg-bg-dark/85 backdrop-blur-md border border-primary/30 text-primary text-[9px] font-black uppercase tracking-widest rounded-sm">
+                      {item.rankBadge}
+                    </span>
+                    <span className="text-[10px] text-text-muted font-mono font-medium bg-bg-dark/50 px-2 py-0.5 rounded">
+                      {item.channel}
+                    </span>
+                  </div>
+
+                  {/* Center Play Button (Click to open Instagram link) */}
+                  <div className="my-auto py-3 flex justify-center items-center relative z-10">
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-14 h-14 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-bg-dark transition-all duration-300 shadow-[0_0_25px_rgba(255,193,208,0.3)]"
+                      title="Watch Reel on Instagram"
+                    >
+                      <Play className="w-6 h-6 fill-current ml-0.5" />
+                    </a>
+                  </div>
+
+                  {/* Views Only — Zero Likes Shown */}
+                  <div className="relative z-10 flex items-center justify-between">
+                    <span className="px-2.5 py-1 bg-bg-dark/90 text-primary text-[10px] font-black uppercase tracking-wider rounded-sm flex items-center gap-1.5 border border-primary/20">
+                      <TrendingUp className="w-3.5 h-3.5 text-secondary" />
+                      {item.metrics.views}
+                    </span>
+                    <span className="text-[9px] font-mono uppercase tracking-widest text-text-muted">
+                      {item.format}
+                    </span>
+                  </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-1">
-                  <button 
-                    onClick={() => setActiveModalItem(item)}
-                    className="text-text-muted hover:text-text-main font-bold uppercase tracking-wider text-[9px] hover:underline"
-                  >
-                    Strategy Note
-                  </button>
-                  <a 
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary font-bold uppercase tracking-widest text-[10px] flex items-center gap-1 hover:underline"
-                  >
-                    Watch <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
+                {/* Content Details */}
+                <div className="p-5 flex-grow flex flex-col justify-between space-y-4">
+                  <div className="space-y-2">
+                    <h3 className="font-headline text-base font-bold text-text-main group-hover:text-primary transition-colors leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="text-[11px] text-text-muted leading-relaxed line-clamp-2">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-white/5 space-y-2 text-[10px]">
+                    <div className="text-text-muted line-clamp-1 italic">
+                      Hook: "{item.hook}"
+                    </div>
+
+                    <div className="flex items-center justify-between pt-1">
+                      <button 
+                        onClick={() => setActiveModalItem(item)}
+                        className="text-text-muted hover:text-primary font-bold uppercase tracking-wider text-[9px] transition-colors"
+                      >
+                        Strategy Note
+                      </button>
+                      <a 
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary font-bold uppercase tracking-widest text-[10px] flex items-center gap-1 hover:underline"
+                      >
+                        Watch <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
                 </div>
+              </motion.div>
+            ))}
+          </div>
+
+        </section>
+      )}
+
+      {/* Visual Section Separator when both are shown */}
+      {filter === 'all' && (
+        <div className="relative py-4 flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-primary/15" />
+          </div>
+          <div className="relative px-6 py-2 bg-bg-dark border border-primary/20 rounded-full text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-secondary flex items-center gap-2 shadow-[0_0_20px_rgba(255,193,208,0.08)]">
+            <Sparkles className="w-3.5 h-3.5 text-primary" />
+            <span>Creative Division: Brand Strategy & Personal Aesthetic</span>
+          </div>
+        </div>
+      )}
+
+      {/* ========================================================================= */}
+      {/* SECTION 2: PERSONAL CREATOR REELS (TOP 4)                                */}
+      {/* ========================================================================= */}
+      {showPersonal && (
+        <section className="space-y-8">
+          
+          {/* Personal Section Header Card */}
+          <div className="glass-card p-6 md:p-8 ghost-border bg-gradient-to-r from-secondary/[0.07] via-bg-surface to-bg-surface flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-l-4 border-l-secondary">
+            <div className="flex items-start md:items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-secondary/10 border border-secondary/30 flex items-center justify-center text-secondary shrink-0 shadow-[0_0_20px_rgba(255,193,208,0.15)]">
+                <Layers className="w-7 h-7" />
+              </div>
+              <div className="space-y-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-[10px] font-headline uppercase tracking-widest text-primary font-black block">
+                    Personal Creator Showcase
+                  </span>
+                  <span className="px-2.5 py-0.5 bg-secondary/20 text-secondary text-[10px] font-black uppercase rounded-full">
+                    5.8K+ Top 4 Views
+                  </span>
+                  <span className="px-2 py-0.5 bg-white/5 text-text-muted text-[10px] font-mono rounded-full">
+                    Top 4 Selected
+                  </span>
+                </div>
+                <h2 className="font-headline text-2xl md:text-3xl font-bold text-text-main">
+                  Personal Creative — Top 4 Creator Reels
+                </h2>
+                <p className="text-xs md:text-sm text-text-muted max-w-2xl">
+                  Short-form visual storytelling, kinetic cut-on-action editing, audio-trend synchronization, and atmospheric lifestyle aesthetics curated on @sangeetshaw_i.
+                </p>
               </div>
             </div>
-          </motion.div>
-        ))}
-      </div>
 
-      {/* Interactive Detail Modal */}
+            <a
+              href="https://www.instagram.com/sangeetshaw_i/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 border border-secondary/40 text-secondary text-xs font-headline font-bold uppercase tracking-wider hover:bg-secondary/15 active:scale-95 transition-all rounded-sm flex items-center gap-2 shrink-0 shadow-[0_0_15px_rgba(255,193,208,0.15)]"
+            >
+              <Instagram className="w-4 h-4" />
+              <span>@sangeetshaw_i</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          {/* Personal Reels 4-Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+            {personalReels.map((item) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="glass-card ghost-border overflow-hidden group flex flex-col justify-between hover:-translate-y-1.5 transition-all duration-500 hover:border-secondary/40"
+              >
+                {/* Visual Mockup Header */}
+                <div 
+                  className={cn(
+                    "relative bg-gradient-to-br border-b border-primary/10 p-6 flex flex-col justify-between overflow-hidden min-h-[210px]",
+                    item.visualBg
+                  )}
+                >
+                  <div className="flex justify-between items-start relative z-10">
+                    <span className="px-2.5 py-1 bg-bg-dark/85 backdrop-blur-md border border-secondary/30 text-secondary text-[9px] font-black uppercase tracking-widest rounded-sm">
+                      {item.rankBadge}
+                    </span>
+                    <span className="text-[10px] text-text-muted font-mono font-medium bg-bg-dark/50 px-2 py-0.5 rounded">
+                      {item.channel}
+                    </span>
+                  </div>
+
+                  {/* Center Play Button (Click to open Instagram link) */}
+                  <div className="my-auto py-3 flex justify-center items-center relative z-10">
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-14 h-14 rounded-full bg-secondary/20 border border-secondary/40 flex items-center justify-center text-secondary group-hover:scale-110 group-hover:bg-secondary group-hover:text-bg-dark transition-all duration-300 shadow-[0_0_25px_rgba(255,193,208,0.3)]"
+                      title="Watch Reel on Instagram"
+                    >
+                      <Play className="w-6 h-6 fill-current ml-0.5" />
+                    </a>
+                  </div>
+
+                  {/* Views Only — Zero Likes Shown */}
+                  <div className="relative z-10 flex items-center justify-between">
+                    <span className="px-2.5 py-1 bg-bg-dark/90 text-secondary text-[10px] font-black uppercase tracking-wider rounded-sm flex items-center gap-1.5 border border-secondary/20">
+                      <TrendingUp className="w-3.5 h-3.5 text-primary" />
+                      {item.metrics.views}
+                    </span>
+                    <span className="text-[9px] font-mono uppercase tracking-widest text-text-muted">
+                      {item.format}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content Details */}
+                <div className="p-5 flex-grow flex flex-col justify-between space-y-4">
+                  <div className="space-y-2">
+                    <h3 className="font-headline text-base font-bold text-text-main group-hover:text-secondary transition-colors leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="text-[11px] text-text-muted leading-relaxed line-clamp-2">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-white/5 space-y-2 text-[10px]">
+                    <div className="text-text-muted line-clamp-1 italic">
+                      Hook: "{item.hook}"
+                    </div>
+
+                    <div className="flex items-center justify-between pt-1">
+                      <button 
+                        onClick={() => setActiveModalItem(item)}
+                        className="text-text-muted hover:text-secondary font-bold uppercase tracking-wider text-[9px] transition-colors"
+                      >
+                        Strategy Note
+                      </button>
+                      <a 
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-secondary font-bold uppercase tracking-widest text-[10px] flex items-center gap-1 hover:underline"
+                      >
+                        Watch <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+        </section>
+      )}
+
+      {/* Interactive Detail Modal (Zero Likes Shown) */}
       <AnimatePresence>
         {activeModalItem && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-bg-dark/80 backdrop-blur-xl">
@@ -477,7 +515,7 @@ export default function ContentShowcase() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="glass-card max-w-xl w-full p-8 ghost-border space-y-6 relative overflow-hidden bg-bg-surface/95"
+              className="glass-card max-w-xl w-full p-8 ghost-border space-y-6 relative overflow-hidden bg-bg-surface/95 shadow-2xl"
             >
               <button 
                 onClick={() => setActiveModalItem(null)}
@@ -498,14 +536,12 @@ export default function ContentShowcase() {
                 </h3>
               </div>
 
-              {/* Stats Bar if present */}
-              {activeModalItem.metrics?.views && (
-                <div className="p-3 bg-bg-surface/80 border border-primary/20 rounded-md flex items-center justify-around text-xs font-mono">
-                  <span className="text-primary font-bold">Views: {activeModalItem.metrics.views}</span>
-                  <span className="text-text-main">Likes: {activeModalItem.metrics.likes}</span>
-                  <span className="text-secondary">Comments: {activeModalItem.metrics.comments}</span>
-                </div>
-              )}
+              {/* Stats Bar (Views, Platform, Format — NO LIKES) */}
+              <div className="p-3 bg-bg-surface/80 border border-primary/20 rounded-md flex items-center justify-around text-xs font-mono">
+                <span className="text-primary font-bold">Views: {activeModalItem.metrics.views}</span>
+                <span className="text-secondary">Channel: {activeModalItem.channel}</span>
+                <span className="text-text-muted">Format: {activeModalItem.format}</span>
+              </div>
 
               {/* Hook Spotlight */}
               <div className="p-4 bg-primary/5 border-l-2 border-primary rounded-r-md space-y-1">
